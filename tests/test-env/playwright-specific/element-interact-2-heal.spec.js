@@ -6,16 +6,16 @@ const clickTimeout = 5000;
 test.describe('Locator API - Element Interaction Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(500);
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
-    //await page.waitForTimeout(1000);
+    await page.waitForTimeout(500);
   });
-/*
+
   test('click action', async ({ page }) => {
     test.slow();
     let content = await page.content();
@@ -38,7 +38,7 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
   });
 
   test('fill and clear actions', async ({ page }) => {
-    test.slow(); 
+    test.slow();
     const inputField = page.locator('.test_class');
     await inputField.fill('Hello World', { timeout: clickTimeout });
     await expect(inputField).toHaveValue('Hello World');
@@ -116,16 +116,6 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
     await expect(inputField).not.toBeFocused();
   });
 
-  // test('drag to action', async ({ page }) => {
-  //   // won't test because there are target and source instead of selector
-  //   test.slow();
-  //   // visually nothing noticeable will happen because the input isn't configured to be draggable
-  //   // actually we should  test on elements that are designed to be draggable
-  //   const inputField = page.locator('.test_class');
-  //   const wrapDiv = page.locator('.shadow-input1');
-  //   await inputField.dragTo(wrapDiv, { timeout: clickTimeout });
-  // });
-
   test('dispatch event action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
@@ -138,23 +128,36 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
     await testTag.dispatchEvent('click', {}, { timeout: clickTimeout });
     await changeNameInput.dispatchEvent('input', { data: 'test' }, { timeout: clickTimeout });
   });
-*/
+
   test('scroll into view if needed action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
     await inputField.scrollIntoViewIfNeeded({
-      timeout: clickTimeout,    
-      strict: true              
+      timeout: clickTimeout,
+      strict: true
     });
     await expect(inputField).toBeVisible();
   });
-/*
+
   test('select text action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
     await inputField.fill('Text to select', { timeout: clickTimeout });
-    await inputField.selectText();
+    await inputField.selectText({
+      timeout: clickTimeout,
+      strict: true
+    });
     await expect(inputField).toBeFocused();
   });
-  */
+
+  // won't test for a while because there are 'target' and 'source' instead of 'selector'
+  // test('drag to action', async ({ page }) => {
+  //   test.slow();
+  //   // visually nothing noticeable will happen because the input isn't configured to be draggable
+  //   // actually we should  test on elements that are designed to be draggable
+  //   const inputField = page.locator('.test_class');
+  //   const wrapDiv = page.locator('.shadow-input1');
+  //   await inputField.dragTo(wrapDiv, { timeout: clickTimeout });
+  // });
+
 });

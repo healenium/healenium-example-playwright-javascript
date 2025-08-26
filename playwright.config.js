@@ -26,7 +26,7 @@ export default defineConfig({
     
     /* Connect to Playwright server */
     connectOptions: {
-//      wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
+      //wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
       wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8080/playwright-proxy',
     },
   },
@@ -39,7 +39,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         // Override connectOptions for this project
         connectOptions: {
-          // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
+          //wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
           wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8080/playwright-proxy',
         },
       },
