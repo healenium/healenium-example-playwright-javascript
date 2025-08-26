@@ -1,6 +1,15 @@
 {
-  "type": "module",
+  "name": "_pw_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "playwright": "^1.53.2"
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
   }
 }

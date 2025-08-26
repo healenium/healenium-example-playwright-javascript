@@ -15,8 +15,13 @@ npx -y playwright run-server --port 5000
 
 [healinium-playwright-proxy](https://github.com/healenium/healenium-playwright-proxy)
 
+connection to the proxy is configured in the 'playwright.config.js'
+
 ## run test 
 
 ```
-node hlm-heal-poc.js
+npx playwright test tests/test-env/page-api/css.spec.js
 ```
+
+## docs
+[Running and debugging Playwright tests](https://playwright.dev/docs/running-tests)
