@@ -21,7 +21,7 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
     let content = await page.content();
     fs.writeFileSync('page-content/page-test-env-#Submit.html', content, 'utf-8');
 
-    const inputField = page.locator('input#change_id');
+    const inputField = page.locator('.test_class');
     await inputField.click({ timeout: clickTimeout });
   });
 
