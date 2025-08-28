@@ -46,6 +46,18 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     expect(stringifiedInputAriaSnapshot).toContain('textbox');
   });
 
+  test('dispatch event action', async ({ page }) => {
+    test.slow();
+    const inputField = page.locator('.test_class');
+    const childTag = page.locator('child_tag#change_element_last_child');
+    const testTag = page.locator('test_tag#change_element');
+    const changeNameInput = page.locator('input[name="change_name"]');
+
+    await inputField.dispatchEvent('keydown', { key: 'A', timeout: clickTimeout });
+    await childTag.dispatchEvent('customEvent', { detail: 'custom data', timeout: clickTimeout });
+    await testTag.dispatchEvent('click', { timeout: clickTimeout });
+    await changeNameInput.dispatchEvent('input', { data: 'test', timeout: clickTimeout });
+  });
 
   test('waitFor action', async ({ page }) => {
     test.slow();

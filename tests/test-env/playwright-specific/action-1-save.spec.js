@@ -3,7 +3,7 @@ import fs from 'fs';
 
 const clickTimeout = 5000;
 
-test.describe('Locator API - Element Interaction Methods - Tests', () => {
+test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
 
     await page.goto('https://elenastepuro.github.io/test_env/index.html');
@@ -41,7 +41,6 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
     await inputField.clear({ timeout: clickTimeout });
     await expect(inputField).toHaveValue('');
   });
-
 
   test('type action', async ({ page }) => {
     test.slow();
@@ -109,19 +108,6 @@ test.describe('Locator API - Element Interaction Methods - Tests', () => {
     await expect(inputField).toBeFocused();
     await inputField.blur({ timeout: clickTimeout });
     await expect(inputField).not.toBeFocused();
-  });
-
-  test('dispatch event action', async ({ page }) => {
-    test.slow();
-    const inputField = page.locator('.test_class');
-    const childTag = page.locator('child_tag#change_element_last_child');
-    const testTag = page.locator('test_tag#change_element');
-    const changeNameInput = page.locator('input[name="change_name"]');
-
-    await inputField.dispatchEvent('keydown', { key: 'A', timeout: clickTimeout });
-    await childTag.dispatchEvent('customEvent', { detail: 'custom data', timeout: clickTimeout });
-    await testTag.dispatchEvent('click', { timeout: clickTimeout });
-    await changeNameInput.dispatchEvent('input', { data: 'test', timeout: clickTimeout });
   });
 
   test('scroll into view if needed action', async ({ page }) => {
