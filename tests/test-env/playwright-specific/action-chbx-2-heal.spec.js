@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const clickTimeout = 5000;
+const TIMEOUT = 5000;
 
 test.describe('Locator API - CheckBox Action Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -23,28 +23,28 @@ test.describe('Locator API - CheckBox Action Methods - HEAL Tests', () => {
     fs.writeFileSync('page-content/page-test-env-#Submit_checkbox.html', content, 'utf-8');
 
     const checkbox = page.locator('input.input1#form_checked1');
-    await checkbox.check({ timeout: clickTimeout });
+    await checkbox.check({ timeout: TIMEOUT });
     await expect(checkbox).toBeChecked();
   });
 
   test('uncheck action', async ({ page }) => {
     test.slow();
     const checkbox2 = page.locator('input.input1#form_checked2');
-    await checkbox2.uncheck({ timeout: clickTimeout });
+    await checkbox2.uncheck({ timeout: TIMEOUT });
     await expect(checkbox2).not.toBeChecked();
   });
 
   test('set checked True action', async ({ page }) => {
     test.slow();
     const checkbox = page.locator('input.input1#form_checked1');
-    await checkbox.setChecked(true, { timeout: clickTimeout });
+    await checkbox.setChecked(true, { timeout: TIMEOUT });
     await expect(checkbox).toBeChecked();
   });
 
   test('set checked False action', async ({ page }) => {
     test.slow();
     const checkbox2 = page.locator('input.input1#form_checked2');
-    await checkbox2.setChecked(false, { timeout: clickTimeout });
+    await checkbox2.setChecked(false, { timeout: TIMEOUT });
     await expect(checkbox2).not.toBeChecked();
   });
 
@@ -53,7 +53,7 @@ test.describe('Locator API - CheckBox Action Methods - HEAL Tests', () => {
     const checkbox = page.locator('input.input1#form_checked1');
     await checkbox.setChecked(true, {
       force: true,
-      timeout: clickTimeout
+      timeout: TIMEOUT
     });
     await expect(checkbox).toBeChecked();
   });

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const timeout = 3000;
+const TIMEOUT = 3000;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -12,8 +12,8 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.slow();
     const checkbox = page.locator('input.input1#form_checked1');
 
-    await checkbox.check({ timeout: timeout });
-    const isCheckboxChecked = await checkbox.isChecked({ timeout });
+    await checkbox.check({ timeout: TIMEOUT });
+    const isCheckboxChecked = await checkbox.isChecked({ timeout: TIMEOUT });
     expect(isCheckboxChecked).toBe(true);
 
   });

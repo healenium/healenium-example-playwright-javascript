@@ -12,10 +12,17 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. (undefined)*/ 
-  workers: process.env.CI ? 1 : 1,
+  /* Opt out of parallel tests on CI. (undefined)*/
+  workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    // Standard line reporter for test progress
+    ['line'],
+
+    // HTML reporter for detailed reports
+    ['html', { outputFolder: 'playwright-report' }],
+
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -23,7 +30,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    
+
     /* Connect to Playwright server */
     connectOptions: {
       //wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
@@ -35,7 +42,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         // Override connectOptions for this project
         connectOptions: {

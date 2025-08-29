@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const timeout = 3000;
+const TIMEOUT = 3000;
 
 test.describe('Locator API - Information Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -18,64 +18,64 @@ test.describe('Locator API - Information Methods - HEAL Tests', () => {
   test('textContent method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const textContent = await inputField.textContent({ timeout });
+    const textContent = await inputField.textContent({ timeout: TIMEOUT });
     console.log('Input textContent:', textContent);
   });
 
   test('innerText method', async ({ page }) => {
     test.slow();
     const linkElement = page.locator('a:has-text("Change: LinkText, PartialLinkText")');
-    const innerText = await linkElement.innerText({ timeout });
+    const innerText = await linkElement.innerText({ timeout: TIMEOUT });
     console.log('Link innerText:', innerText);
   });
 
   test('innerHTML method', async ({ page }) => {
     test.slow();
     const linkElement = page.locator('a:has-text("Change: LinkText, PartialLinkText")');
-    const innerHTML = await linkElement.innerHTML({ timeout });
+    const innerHTML = await linkElement.innerHTML({ timeout: TIMEOUT });
     console.log('Child tag innerHTML:', innerHTML);
   });
 
   test('inputValue method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    await inputField.fill('Test value', { timeout });
-    const inputValue = await inputField.inputValue({ timeout });
+    await inputField.fill('Test value', { timeout: TIMEOUT });
+    const inputValue = await inputField.inputValue({ timeout: TIMEOUT });
     expect(inputValue).toBe('Test value');
   });
 
   test('getAttribute method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const attribute = await inputField.getAttribute('name', { timeout });
+    const attribute = await inputField.getAttribute('name', { timeout: TIMEOUT });
     expect(attribute).toBe("Field2");
   });
 
   test('boundingBox method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const boundingBox = await inputField.boundingBox({ timeout });
+    const boundingBox = await inputField.boundingBox({ timeout: TIMEOUT });
     console.log('Input bounding box:', boundingBox);
   });
 
   test('isEnabled method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const isEnabled = await inputField.isEnabled({ timeout });
+    const isEnabled = await inputField.isEnabled({ timeout: TIMEOUT });
     expect(isEnabled).toBe(true);
   });
 
   test('isDisabled method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const isDisabled = await inputField.isDisabled({ timeout });
+    const isDisabled = await inputField.isDisabled({ timeout: TIMEOUT });
     expect(isDisabled).toBe(false);
   });
 
   test('isEditable method', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    const isInputEditable = await inputField.isEditable({ timeout });
+    const isInputEditable = await inputField.isEditable({ timeout: TIMEOUT });
     expect(isInputEditable).toBe(true);
   });
 

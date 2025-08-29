@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const clickTimeout = 5000;
+const TIMEOUT = 5000;
 
 test.describe('Locator API - Action Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -22,28 +22,28 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     fs.writeFileSync('page-content/page-test-env-#Submit.html', content, 'utf-8');
 
     const inputField = page.locator('.test_class');
-    await inputField.click({ timeout: clickTimeout });
+    await inputField.click({ timeout: TIMEOUT });
   });
 
   test('double click action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('input#change_id');
-    await inputField.dblclick({ timeout: clickTimeout });
+    await inputField.dblclick({ timeout: TIMEOUT });
   });
 
   test('blur action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('input#change_id');
-    await inputField.blur({ timeout: clickTimeout });
+    await inputField.blur({ timeout: TIMEOUT });
   });
 
   test('fill and clear actions', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    await inputField.fill('Hello World', { timeout: clickTimeout });
+    await inputField.fill('Hello World', { timeout: TIMEOUT });
     await expect(inputField).toHaveValue('Hello World');
 
-    await inputField.clear({ timeout: clickTimeout });
+    await inputField.clear({ timeout: TIMEOUT });
     await expect(inputField).toHaveValue('');
   });
 
@@ -51,7 +51,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
   test('type action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    await inputField.type('Typing text slowly', { timeout: clickTimeout });
+    await inputField.type('Typing text slowly', { timeout: TIMEOUT });
     await expect(inputField).toHaveValue('Typing text slowly');
   });
 
@@ -60,7 +60,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     const inputField = page.locator('.test_class');
     await inputField.pressSequentially('Sequential typing', {
       delay: 100,
-      timeout: clickTimeout
+      timeout: TIMEOUT
     });
     await expect(inputField).toHaveValue('Sequential typing');
   });
@@ -68,35 +68,8 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
   test('press action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('input#change_id');
-    await inputField.fill('Test text', { timeout: clickTimeout });
-    await inputField.press('Enter', { timeout: clickTimeout });
-  });
-
-  test('check/uncheck action', async ({ page }) => {
-    test.slow();
-    const checkbox = page.locator('input#form_checked1');
-    await checkbox.check({ timeout: clickTimeout });
-    await expect(checkbox).toBeChecked();
-    await checkbox.uncheck({ timeout: clickTimeout });
-    await expect(checkbox).not.toBeChecked();
-  });
-
-  test('set checked action', async ({ page }) => {
-    test.slow();
-    const checkbox = page.locator('input#form_checked1');
-    await checkbox.setChecked(true, { timeout: clickTimeout });
-    await expect(checkbox).toBeChecked();
-    await checkbox.setChecked(false, { timeout: clickTimeout });
-    await expect(checkbox).not.toBeChecked();
-  });
-
-  test('set checked with force action', async ({ page }) => {
-    test.slow();
-    const checkbox = page.locator('input#form_checked1');
-    await checkbox.setChecked(true, {
-      force: true,
-      timeout: clickTimeout
-    });
+    await inputField.fill('Test text', { timeout: TIMEOUT });
+    await inputField.press('Enter', { timeout: TIMEOUT });
   });
 
   test('hover action', async ({ page }) => {
@@ -104,15 +77,15 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     const inputField = page.locator('input#change_id');
     // here might be Visual changes: 
     // If there are hover styles, they'll be visible (e.g., border color change, background color)
-    await inputField.hover({ timeout: clickTimeout });
+    await inputField.hover({ timeout: TIMEOUT });
   });
 
   test('focus and blur actions', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    await inputField.focus({ timeout: clickTimeout });
+    await inputField.focus({ timeout: TIMEOUT });
     await expect(inputField).toBeFocused();
-    await inputField.blur({ timeout: clickTimeout });
+    await inputField.blur({ timeout: TIMEOUT });
     await expect(inputField).not.toBeFocused();
   });
 
@@ -120,7 +93,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     test.slow();
     const inputField = page.locator('.test_class');
     await inputField.scrollIntoViewIfNeeded({
-      timeout: clickTimeout,
+      timeout: TIMEOUT,
       strict: true
     });
     await expect(inputField).toBeVisible();
@@ -129,9 +102,9 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
   test('select text action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
-    await inputField.fill('Text to select', { timeout: clickTimeout });
+    await inputField.fill('Text to select', { timeout: TIMEOUT });
     await inputField.selectText({
-      timeout: clickTimeout,
+      timeout: TIMEOUT,
       strict: true
     });
     await expect(inputField).toBeFocused();
