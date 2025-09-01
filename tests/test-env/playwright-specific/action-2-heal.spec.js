@@ -110,14 +110,4 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     await expect(inputField).toBeFocused();
   });
 
-  // won't test for a while because there are 'target' and 'source' instead of 'selector'
-  // test('drag to action', async ({ page }) => {
-  //   test.slow();
-  //   // visually nothing noticeable will happen because the input isn't configured to be draggable
-  //   // actually we should  test on elements that are designed to be draggable
-  //   const inputField = page.locator('.test_class');
-  //   const wrapDiv = page.locator('.shadow-input1');
-  //   await inputField.dragTo(wrapDiv, { timeout: clickTimeout });
-  // });
-
 });

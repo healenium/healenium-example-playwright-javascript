@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const clickTimeout = 5000;
+const TIMEOUT = 5000;
 
 test.describe('CSS Locator Tests', () => {
-/*
+
   test('Update locator for element with css attribute', async ({ page }) => {
     // Navigate to the callback test page
     await page.goto('https://mdn.github.io/web-components-examples/life-cycle-callbacks/');
@@ -15,7 +15,7 @@ test.describe('CSS Locator Tests', () => {
     // Click add square button and verify square element
     const addSquareBtn = page.locator('//button[contains(@class, "add")]');
     await expect(addSquareBtn).toBeVisible();
-    await addSquareBtn.click({ timeout: clickTimeout });
+    await addSquareBtn.click({ timeout: TIMEOUT });
 
     content = await page.content();
     fs.writeFileSync('page-content/page-test-env-callback-1.html', content, 'utf-8');
@@ -31,7 +31,7 @@ test.describe('CSS Locator Tests', () => {
       // Click update square button
       const updateSquareBtn = page.locator('//button[contains(@class, "update")]');
       await expect(updateSquareBtn).toBeVisible();
-      await updateSquareBtn.click({ timeout: clickTimeout });
+      await updateSquareBtn.click({ timeout: TIMEOUT });
 
       content = await page.content();
       fs.writeFileSync(`page-content/page-test-env-callback-${i + 2}.html`, content, 'utf-8');
@@ -53,7 +53,7 @@ test.describe('CSS Locator Tests', () => {
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS ID with special character after selector change (should be healed)
     const healedChangeNameElement = page.locator('input#change\\:name');
@@ -71,7 +71,7 @@ test.describe('CSS Locator Tests', () => {
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS tag after selector change (should be healed)
     const healedTestTagElement = page.locator('test_tag');
@@ -89,7 +89,7 @@ test.describe('CSS Locator Tests', () => {
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find disabled element by CSS pseudo-selector after selector change (should be healed)
     const healedDisabledElement = page.locator('input:disabled');
@@ -107,7 +107,7 @@ test.describe('CSS Locator Tests', () => {
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const healedEnabledElement = page.locator('textarea:enabled');
@@ -125,11 +125,11 @@ test.describe('CSS Locator Tests', () => {
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS class after selector change (should be healed)
     const healedTestClassElement = page.locator('.test_class');
     await expect(healedTestClassElement).toBeVisible();
   });
-  */
+  
 });

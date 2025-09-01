@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const clickTimeout = 5000;
+const TIMEOUT = 5000;
 
 test.describe('Parent-Child Locator Tests', () => {
 
@@ -16,7 +16,7 @@ test.describe('Parent-Child Locator Tests', () => {
     // Click Change locators button
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS first-child pseudo-selector after selector change (should be healed)
     const healedFirstChildElement = await page.$('test_tag:first-child');
@@ -36,7 +36,7 @@ test.describe('Parent-Child Locator Tests', () => {
     // Click Change locators button
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS last-child pseudo-selector after selector change (should be healed)
     const healedLastChildElement = await page.$('child_tag:last-child');

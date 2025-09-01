@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const clickTimeout = 5000;
+const TIMEOUT = 5000;
 
 test.describe('Simple Locator Tests', () => {
 
@@ -15,7 +15,7 @@ test.describe('Simple Locator Tests', () => {
     // Click Change locators button
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by CSS ID after selector change (should be healed)
     const changeIdElement = await page.$('#change_id');
@@ -34,7 +34,7 @@ test.describe('Simple Locator Tests', () => {
     // Click Change locators button
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const changedEnabledElement = await page.$('textarea:enabled');
@@ -53,7 +53,7 @@ test.describe('Simple Locator Tests', () => {
     // Click Change locators button
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click({ timeout: clickTimeout });
+    await submitBtn.click({ timeout: TIMEOUT });
 
     // Find element by XPath not contains after selector change (should be healed)
     const changedNotContainsElement = await page.$('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
