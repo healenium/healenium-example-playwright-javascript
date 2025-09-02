@@ -1,10 +1,9 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 
 test.describe('XPath Locator Tests', () => {
-/*
+
   test('XPath with special characters', async ({ page }) => {
     await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
@@ -84,13 +83,10 @@ test.describe('XPath Locator Tests', () => {
     expect(healedNotContainsElement).not.toBeNull();
     await healedNotContainsElement.press('Enter');
   });
-*/
+
   test('XPath Following-Sibling', async ({ page }) => {
     await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
-
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env.html', content, 'utf-8');
 
     // Find element by XPath following-sibling before selector change
     const followingSiblingElement = await page.$('xpath=//*[starts-with(@class, "test")]/following-sibling::*');
@@ -102,15 +98,12 @@ test.describe('XPath Locator Tests', () => {
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
 
-    let content2 = await page.content();
-    fs.writeFileSync('page-content/page-test-env-2.html', content2, 'utf-8');
-
     // Find element by XPath following-sibling after selector change (should be healed)
     const healedFollowingSiblingElement = await page.$('xpath=//*[starts-with(@class, "test")]/following-sibling::*');
     expect(healedFollowingSiblingElement).not.toBeNull();
     await healedFollowingSiblingElement.press('Enter');
   });
-/*
+
   test('XPath Ancestor', async ({ page }) => {
     await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
@@ -230,5 +223,5 @@ test.describe('XPath Locator Tests', () => {
     expect(healedDescendantElement).not.toBeNull();
     await healedDescendantElement.press('Enter');
   });
-  */
+
 });

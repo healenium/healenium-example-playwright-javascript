@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 
@@ -90,9 +89,6 @@ test.describe('XPath Locator API Tests', () => {
     page.on('dialog', dialog => dialog.accept());
     test.slow();
 
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env.html', content, 'utf-8');
-
     const followingSiblingElement = page.locator('xpath=//input[@class="test_class"]/following-sibling::*');
     await expect(followingSiblingElement).toHaveClass('shadow-input1');
 
@@ -100,9 +96,6 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-
-    let content2 = await page.content();
-    fs.writeFileSync('page-content/page-test-env-2.html', content2, 'utf-8');
 
     // Find element by XPath following-sibling after selector change (should be healed)
     const healedFollowingSiblingElement = page.locator('xpath=//input[@class="test_class"]/following-sibling::*');
