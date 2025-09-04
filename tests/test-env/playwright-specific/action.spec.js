@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
+import path from 'path';
 
 const TIMEOUT = 5000;
 
 test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+  // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+  // await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
   });
 
   test('click action', async ({ page }) => {
@@ -234,6 +237,50 @@ test.describe('Locator API - Action Methods - Tests', () => {
       strict: true
     });
     await expect(healedInputField).toBeFocused();
+  });
+
+  test('select Option action', async ({ page }) => {
+    test.slow();
+    const selectElement = page.locator('#select_item');
+    await selectElement.selectOption({ label: 'Item 1' }, { timeout: TIMEOUT });
+
+    // await selectElement.selectOption([{ value: '2' }, { value: '3' }], { timeout: TIMEOUT });
+
+    // Click Change locators button to test healing
+    const submitBtn = page.locator('#Submit');
+    expect(submitBtn).not.toBeNull();
+    await submitBtn.click();
+    await page.waitForTimeout(500);
+
+    // Test healing - same action should work after locator change
+    const healedSelectElement = page.locator('#select_item');
+    await healedSelectElement.selectOption({ label: 'Item 1' }, { timeout: TIMEOUT });
+    await expect(healedSelectElement).toHaveValue('1');
+  });
+
+  test('set Input Files action', async ({ page }) => {
+    test.slow();
+    const filePath = path.join(__dirname, '../../../test-data/test-file.txt');
+  
+    const inputFile = page.locator('#file_input');
+    await inputFile.setInputFiles(filePath, { timeout: TIMEOUT });
+
+    const value = await inputFile.inputValue({ timeout: TIMEOUT });
+    console.log('Input value:', value);
+
+    // Click Change locators button to test healing
+    const submitBtn = page.locator('#Submit');
+    expect(submitBtn).not.toBeNull();
+    await submitBtn.click();
+    await page.waitForTimeout(500);
+
+    // Test healing - same action should work after locator change
+    const healedInputFile = page.locator('#file_input');
+    await healedInputFile.setInputFiles(filePath, { timeout: TIMEOUT });
+
+    const healedValue = await healedInputFile.inputValue({ timeout: TIMEOUT });
+
+    expect(healedValue).toBe(value);
   });
 
   // won't test for a while because there are 'target' and 'source' instead of 'selector'

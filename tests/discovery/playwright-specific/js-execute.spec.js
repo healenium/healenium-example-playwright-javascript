@@ -65,4 +65,8 @@ test.describe('Locator API - Action Methods - Tests', () => {
     await page.screenshot({ path: 'screenshots/evaluateAll-1.png', fullPage: true });
   }); 
 
+  // 'evaluate'       can not be healed because under the hood request 'waitForSelector' is internal with timeout 0
+  // 'evaluateHandle' can not be healed because under the hood request 'waitForSelector' is internal with timeout 0
+  // 'evaluateAll'    won't heal multiple elements
+
 });
