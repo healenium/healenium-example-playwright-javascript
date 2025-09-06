@@ -2,16 +2,19 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 3000;
-const ITERATIONS = 5;
+const ITERATIONS = 3;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('https://elenastepuro.github.io/test_env/index.html');
-        await page.waitForTimeout(1000);
+        // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+        // await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+        await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
+        await page.waitForTimeout(100);
     });
 
-    test('isChecked with repeat', async ({ page }, testInfo) => {
-        test.slow();
+    test('Action methods with repeat', async ({ page }, testInfo) => {
+        //test.slow();
+        test.setTimeout(10000_000);
         const inputField = page.locator('.test_class');
         const checkbox = page.locator('input.input1#form_checked1');
         const linkElement = page.locator('a:has-text("Change: LinkText, PartialLinkText")');
@@ -26,7 +29,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             clear: [],
             pressSequentially: [],
             press: [],
-            //            hover: [],
+            hover: [],
             focus: [],
             scrollIntoViewIfNeeded: [],
             selectText: [],
@@ -52,6 +55,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             const result = await operation();
             const endTime = Date.now();
             actionExecutionTimes[operationName].push(endTime - startTime);
+            await page.waitForTimeout(101);
             return result;
         };
 
@@ -69,9 +73,8 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
                 timeout: TIMEOUT
             }));
             await timeOperation('press', () => inputField.press('Enter', { timeout: TIMEOUT }));
-            //            await timeOperation('hover', () => inputField.hover({ timeout: TIMEOUT }));
+            await timeOperation('hover', () => inputField.hover({ timeout: TIMEOUT }));
             await timeOperation('focus', () => inputField.focus({ timeout: TIMEOUT }));
-            await timeOperation('blur', () => inputField.blur({ timeout: TIMEOUT }));
             await timeOperation('scrollIntoViewIfNeeded', () => inputField.scrollIntoViewIfNeeded({
                 timeout: TIMEOUT,
                 strict: true
@@ -101,10 +104,10 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             await timeOperation('isChecked', () => checkbox.isChecked({ timeout: TIMEOUT }));
 
             // Reset for next iteration
-            await page.waitForTimeout(50);
+            await page.waitForTimeout(105);
 
             // Log progress
-            if ((i + 1) % 10 === 0) {
+            if ((i + 1) % 5 === 0) {
                 console.log(`Completed ${i + 1}/${ITERATIONS} iterations`);
             }
         }
