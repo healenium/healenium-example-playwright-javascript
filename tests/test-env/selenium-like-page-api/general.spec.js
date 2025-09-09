@@ -4,10 +4,12 @@ import fs from 'fs';
 const TIMEOUT = 5000;
 
 test.describe('General Locator Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+  });
 
   test('Button click with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     // Set up dialog handler
     page.on('dialog', dialog => dialog.accept());
@@ -34,8 +36,6 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Input fields click with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     // Test elements before selector change
     const testClassElement = await page.$('input.test_class');
@@ -90,8 +90,6 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Checkbox verify with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     // Find checkboxes before selector change
     const checkbox1 = await page.$('input.input1#form_checked1');
@@ -119,8 +117,6 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Input field enable to disable with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     // Find element before selector change (should be enabled)
     const enabledElement = await page.$('#change_enabled');
@@ -139,8 +135,6 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Checkbox checked to unchecked with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     // Find checkbox before selector change (should be checked)
     const checkedElement = await page.$('#change_checked');

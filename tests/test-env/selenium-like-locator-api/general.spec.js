@@ -3,10 +3,12 @@ import { test, expect } from '@playwright/test';
 const TIMEOUT = 3000;
 
 test.describe('General Locator API Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+  });
 
   test('Button click with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     test.slow();
 
     page.on('dialog', dialog => dialog.accept());
@@ -32,8 +34,6 @@ test.describe('General Locator API Tests', () => {
   });
 
   test('Input fields click with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     test.slow();
 
     // Test elements before selector change
@@ -89,8 +89,6 @@ test.describe('General Locator API Tests', () => {
   });
 
   test('Checkbox verify with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     test.slow();
 
     // Find checkboxes before selector change
@@ -116,8 +114,6 @@ test.describe('General Locator API Tests', () => {
   });
 
   test('Input field enable to disable with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     test.slow();
 
     // Find element before selector change (should be enabled)
@@ -137,8 +133,6 @@ test.describe('General Locator API Tests', () => {
   });
 
   test('Checkbox checked to unchecked with FindBy annotation', async ({ page }) => {
-    // Navigate to the test page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     test.slow();
 
     // Find checkbox before selector change (should be checked)

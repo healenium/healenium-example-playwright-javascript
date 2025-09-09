@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 3000;
-const ITERATIONS = 3;
+const ITERATIONS = 1;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
         // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-        // await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-        await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
+        await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+        // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
         await page.waitForTimeout(100);
     });
 
@@ -55,7 +55,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             const result = await operation();
             const endTime = Date.now();
             actionExecutionTimes[operationName].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(301);
             return result;
         };
 

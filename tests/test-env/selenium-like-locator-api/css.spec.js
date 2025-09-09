@@ -44,7 +44,8 @@ test.describe('CSS Locator Tests', () => {
 
   test('Update locator for element with css id with special character', async ({ page }) => {
     // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
 
     // Find element by CSS ID with special character before selector change
     const changeNameElement = page.locator('input#change\\:name');
@@ -62,7 +63,8 @@ test.describe('CSS Locator Tests', () => {
 
   test('Update locator for element with css Element', async ({ page }) => {
     // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
 
     // Find element by CSS tag before selector change
     const testTagElement = page.locator('test_tag');
@@ -80,7 +82,8 @@ test.describe('CSS Locator Tests', () => {
 
   test('Update locator for element with css Disabled', async ({ page }) => {
     // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
 
     // Find disabled element by CSS pseudo-selector before selector change
     const disabledElement = page.locator('input:disabled');
@@ -98,7 +101,8 @@ test.describe('CSS Locator Tests', () => {
 
   test('Update locator for element with css Enabled', async ({ page }) => {
     // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
 
     // Find enabled element by CSS pseudo-selector before selector change
     const enabledElement = page.locator('textarea:enabled');
@@ -116,8 +120,9 @@ test.describe('CSS Locator Tests', () => {
 
   test('Update locator for element with css ClassName', async ({ page }) => {
     // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
-
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    
     // Find element by CSS class before selector change
     const testClassElement = page.locator('.test_class');
     await expect(testClassElement).toBeVisible();

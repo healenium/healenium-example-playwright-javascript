@@ -3,9 +3,12 @@ import { test, expect } from '@playwright/test';
 const TIMEOUT = 5000;
 
 test.describe('XPath Locator API Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+  });
 
   test('XPath with special characters', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath with special characters before selector change
@@ -25,7 +28,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Following', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath following before selector change
@@ -45,7 +47,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Contains', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath contains before selector change
@@ -65,7 +66,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Not Contains', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath not contains before selector change
@@ -85,7 +85,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Following-Sibling', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
     test.slow();
 
@@ -103,7 +102,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Ancestor', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath ancestor before selector change
@@ -123,7 +121,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath OR', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath OR before selector change
@@ -143,7 +140,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath And', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath AND before selector change
@@ -163,7 +159,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Starts-with', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath starts-with before selector change
@@ -183,7 +178,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Preceding', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath preceding before selector change
@@ -203,7 +197,6 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Descendant', async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
     page.on('dialog', dialog => dialog.accept());
 
     // Find element by XPath descendant before selector change

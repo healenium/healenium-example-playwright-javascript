@@ -3,10 +3,12 @@ import { test, expect } from '@playwright/test';
 const TIMEOUT = 5000;
 
 test.describe('Simple Locator API Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+  });
 
   test('Update locator for element with css id', async ({ page }) => {
-    // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     const idElement = page.locator('#change_id');
     await expect(idElement).toBeVisible();
@@ -22,8 +24,6 @@ test.describe('Simple Locator API Tests', () => {
   });
 
   test('Update locator for element with css Enabled', async ({ page }) => {
-    // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     const enabledElement = page.locator('textarea:enabled');
     await expect(enabledElement).toBeVisible();
@@ -39,8 +39,6 @@ test.describe('Simple Locator API Tests', () => {
   });
 
   test('XPath Not Contains', async ({ page }) => {
-    // Navigate to the test environment page
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
 
     const notContainsElement = page.locator('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
     await expect(notContainsElement).toBeVisible();
