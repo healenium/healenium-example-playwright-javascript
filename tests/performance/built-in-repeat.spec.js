@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 3000;
-const ITERATIONS = 1;
+const ITERATIONS = 20;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -131,8 +131,9 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
         // Display results
         console.log('\n=== PERFORMANCE RESULTS BY ACTION ===');
         console.log(`Iterations: ${ITERATIONS}`);
+        console.log(`actionName \tAvg ms \tMin ms\t Max ms`);
         for (const [actionName, stats] of Object.entries(actionStats)) {
-            console.log(`${actionName}: Avg: ${stats.average}ms, Min: ${stats.min}ms, Max: ${stats.max}ms`);
+            console.log(`${actionName} tt ${stats.average} tt ${stats.min} tt ${stats.max}`);
         }
 
         // Save results to file

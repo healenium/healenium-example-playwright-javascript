@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
 
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
     await page.waitForTimeout(1000);
 
   });

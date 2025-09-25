@@ -4,7 +4,7 @@ const TIMEOUT = 5000;
 
 test.describe('Element Collection Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://elenastepuro.github.io/test_env/index.html');
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
     await page.waitForTimeout(500);
   });
 
