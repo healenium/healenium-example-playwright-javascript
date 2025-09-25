@@ -18,7 +18,8 @@ test.describe('Simple Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-
+    await page.waitForTimeout(300);
+    
     // Find element by CSS ID after selector change (should be healed)
     const changeIdElement = await page.$('#change_id');
     expect(changeIdElement).not.toBeNull();
@@ -35,6 +36,7 @@ test.describe('Simple Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const changedEnabledElement = await page.$('textarea:enabled');
@@ -52,6 +54,7 @@ test.describe('Simple Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by XPath not contains after selector change (should be healed)
     const changedNotContainsElement = await page.$('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');

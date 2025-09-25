@@ -19,7 +19,8 @@ test.describe('Parent-Child Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-
+    await page.waitForTimeout(300);
+    
     // Find element by CSS first-child pseudo-selector after selector change (should be healed)
     const healedFirstChildElement = await page.$('test_tag:first-child');
     expect(healedFirstChildElement).not.toBeNull();
@@ -37,6 +38,7 @@ test.describe('Parent-Child Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by CSS last-child pseudo-selector after selector change (should be healed)
     const healedLastChildElement = await page.$('child_tag:last-child');

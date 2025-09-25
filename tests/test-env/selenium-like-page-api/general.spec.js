@@ -28,6 +28,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(500);
 
     // Click element by change ID (after selector change - should be healed)
     const healedChangeIdElement = await page.$('#change_id');
@@ -64,7 +65,8 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-
+    await page.waitForTimeout(500);
+    
     // Test elements after selector change (should be healed)
     const healedTestClassElement = await page.$('input.test_class');
     expect(healedTestClassElement).not.toBeNull();
@@ -103,6 +105,7 @@ test.describe('General Locator Tests', () => {
     const submitCheckboxBtn = await page.$('#Submit_checkbox');
     expect(submitCheckboxBtn).not.toBeNull();
     await submitCheckboxBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(500);
 
     let content = await page.content();
     fs.writeFileSync('page-content/page-test-env-3.html', content, 'utf-8');
@@ -127,6 +130,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(500);
 
     // Find element after selector change (should be healed and now disabled)
     const disabledElement = await page.$('#change_enabled');
@@ -145,6 +149,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(500);
 
     // Find checkbox after selector change (should be healed and now unchecked)
     const uncheckedElement = await page.$('#change_checked');

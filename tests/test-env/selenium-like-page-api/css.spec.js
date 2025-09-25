@@ -33,7 +33,8 @@ test.describe('CSS Locator Tests', () => {
       const updateSquareBtn = await page.$('//button[contains(@class, "update")]');
       expect(updateSquareBtn).not.toBeNull();
       await updateSquareBtn.click({ timeout: TIMEOUT });
-
+      await page.waitForTimeout(300);
+      
       content = await page.content();
       fs.writeFileSync(`page-content/page-test-env-callback-${i + 2}.html`, content, 'utf-8');
 
@@ -58,6 +59,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by CSS ID with special character after selector change (should be healed)
     const healedChangeNameElement = await page.$('input#change\\:name');
@@ -79,6 +81,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by CSS tag after selector change (should be healed)
     const healedTestTagElement = await page.$('test_tag');
@@ -100,6 +103,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find disabled element by CSS pseudo-selector after selector change (should be healed)
     const healedDisabledElement = await page.$('input:disabled');
@@ -121,6 +125,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const healedEnabledElement = await page.$('textarea:enabled');
@@ -142,6 +147,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by CSS class after selector change (should be healed)
     const healedTestClassElement = await page.$('.test_class');

@@ -55,7 +55,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             const result = await operation();
             const endTime = Date.now();
             actionExecutionTimes[operationName].push(endTime - startTime);
-            await page.waitForTimeout(301);
+            await page.waitForTimeout(501);
             return result;
         };
 
@@ -131,7 +131,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
         // Display results
         console.log('\n=== PERFORMANCE RESULTS BY ACTION ===');
         console.log(`Iterations: ${ITERATIONS}`);
-        console.log(`actionName \tAvg ms \tMin ms\t Max ms`);
+        console.log(`actionName tt Avg ms tt Min ms tt Max ms`);
         for (const [actionName, stats] of Object.entries(actionStats)) {
             console.log(`${actionName} tt ${stats.average} tt ${stats.min} tt ${stats.max}`);
         }

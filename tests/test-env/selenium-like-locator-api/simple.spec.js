@@ -17,6 +17,7 @@ test.describe('Simple Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find element by CSS ID after selector change (should be healed)
     const changeIdElement = page.locator('#change_id');
@@ -32,6 +33,7 @@ test.describe('Simple Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
+    await page.waitForTimeout(300);
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const changedEnabledElement = page.locator('textarea:enabled');
@@ -47,7 +49,8 @@ test.describe('Simple Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-
+    await page.waitForTimeout(300);
+    
     // Find element by XPath not contains after selector change (should be healed)
     const changedNotContainsElement = page.locator('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
     await expect(changedNotContainsElement).toBeVisible();
