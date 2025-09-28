@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - Utility Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 
   test('describe action', async ({ page }) => {
@@ -28,7 +31,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedChangeIdInput = page.locator('input#change_id')
@@ -61,7 +64,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedChangeIdInput = page.locator('input#change_id');
@@ -90,7 +93,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -120,7 +123,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedTestClassInput = page.locator('.test_class');
@@ -151,7 +154,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedTestClassInput = page.locator('.test_class');

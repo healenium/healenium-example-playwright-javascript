@@ -1,16 +1,19 @@
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('XPath Locator API Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 
   test('XPath with special characters', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath with special characters before selector change
     const specialCharElement = page.locator('xpath=//*[@id="change:name"]');
     await expect(specialCharElement).toBeVisible();
@@ -20,7 +23,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath with special characters after selector change (should be healed)
     const healedSpecialCharElement = page.locator('xpath=//*[@id="change:name"]');
@@ -29,8 +32,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Following', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath following before selector change
     const followingElement = page.locator('xpath=//*[@id="change_className"]/following::test_tag');
     await expect(followingElement).toBeVisible();
@@ -40,7 +43,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath following after selector change (should be healed)
     const healedFollowingElement = page.locator('xpath=//*[@id="change_className"]/following::test_tag');
@@ -49,8 +52,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Contains', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath contains before selector change
     const containsElement = page.locator('xpath=//input[contains(@class, "test")]');
     await expect(containsElement).toBeVisible();
@@ -60,7 +63,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath contains after selector change (should be healed)
     const healedContainsElement = page.locator('xpath=//input[contains(@class, "test")]');
@@ -69,8 +72,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Not Contains', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath not contains before selector change
     const notContainsElement = page.locator('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
     await expect(notContainsElement).toBeVisible();
@@ -80,7 +83,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath not contains after selector change (should be healed)
     const healedNotContainsElement = page.locator('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
@@ -89,9 +92,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Following-Sibling', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-    test.slow();
-
     const followingSiblingElement = page.locator('xpath=//input[@class="test_class"]/following-sibling::*');
     await expect(followingSiblingElement).toHaveClass('shadow-input1');
 
@@ -99,7 +101,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath following-sibling after selector change (should be healed)
     const healedFollowingSiblingElement = page.locator('xpath=//input[@class="test_class"]/following-sibling::*');
@@ -107,8 +109,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Ancestor', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath ancestor before selector change
     const ancestorElement = page.locator('xpath=(//*[starts-with(@class, "test")]/ancestor::div[@class="healenium-form validate-form"]//input)[1]');
     await expect(ancestorElement).toBeVisible();
@@ -118,7 +120,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath ancestor after selector change (should be healed)
     const healedAncestorElement = page.locator('xpath=(//*[starts-with(@class, "test")]/ancestor::div[@class="healenium-form validate-form"]//input)[1]');
@@ -127,8 +129,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath OR', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath OR before selector change
     const orElement = page.locator('xpath=//*[@id="change_id" or @id="omg"]');
     await expect(orElement).toBeVisible();
@@ -138,7 +140,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath OR after selector change (should be healed)
     const healedOrElement = page.locator('xpath=//*[@id="change_id" or @id="omg"]');
@@ -147,8 +149,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath And', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath AND before selector change
     const andElement = page.locator('xpath=//*[@id="change_id" and @type="text"]');
     await expect(andElement).toBeVisible();
@@ -158,7 +160,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath AND after selector change (should be healed)
     const healedAndElement = page.locator('xpath=//*[@id="change_id" and @type="text"]');
@@ -167,8 +169,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Starts-with', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath starts-with before selector change
     const startsWithElement = page.locator('xpath=//*[starts-with(@class, "test") and @name="Field2"]');
     await expect(startsWithElement).toBeVisible();
@@ -178,7 +180,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath starts-with after selector change (should be healed)
     const healedStartsWithElement =  page.locator('xpath=//*[starts-with(@class, "test") and @name="Field2"]');
@@ -187,8 +189,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Preceding', async ({ page }) => {
+    test.slow();  
     page.on('dialog', dialog => dialog.accept());
-
     // Find element by XPath preceding before selector change
     const precedingElement = page.locator('xpath=//*[@id="change_className"]/preceding::*[@id="change_id"]');
     await expect(precedingElement).toBeVisible();
@@ -198,7 +200,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath preceding after selector change (should be healed)
     const healedPrecedingElement = page.locator('xpath=//*[@id="change_className"]/preceding::*[@id="change_id"]');
@@ -207,8 +209,8 @@ test.describe('XPath Locator API Tests', () => {
   });
 
   test('XPath Descendant', async ({ page }) => {
-    page.on('dialog', dialog => dialog.accept());
-
+    test.slow();  
+    page.on('dialog', dialog => dialog.accept()); 
     // Find element by XPath descendant before selector change
     const descendantElement = page.locator('xpath=//*[@id="descendant_change"]/descendant::input');
     await expect(descendantElement).toBeVisible();
@@ -218,7 +220,7 @@ test.describe('XPath Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by XPath descendant after selector change (should be healed)
     const healedDescendantElement = page.locator('xpath=//*[@id="descendant_change"]/descendant::input');

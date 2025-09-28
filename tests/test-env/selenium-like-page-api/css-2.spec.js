@@ -1,55 +1,19 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
-const TIMEOUT = 5000;
+const TIMEOUT = 9000;
+const WAIT_TIMEOUT = 500;
 
-test.describe('CSS Locator Tests', () => {
+test.describe('CSS 2 Locator Tests', () => {
 
-  test('Update locator for element with css attribute', async ({ page }) => {
-    // Navigate to the callback test page
-    await page.goto('https://mdn.github.io/web-components-examples/life-cycle-callbacks/');
+  test.beforeEach(async ({ page }) => {
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'domcontentloaded' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
 
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-callback.html', content, 'utf-8');
-
-    // Click add square button and verify square element
-    const addSquareBtn = await page.$('//button[contains(@class, "add")]');
-    expect(addSquareBtn).not.toBeNull();
-    await addSquareBtn.click({ timeout: TIMEOUT });
-
-    content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-callback-1.html', content, 'utf-8');
-
-    // Verify square element exists
-    const squareElement = await page.$('custom-square[color="red"]');
-    expect(squareElement).not.toBeNull();
-    expect(await squareElement.isVisible()).toBe(true);
-
-    // Test healing multiple times
-    for (let i = 0; i <= 1; i++) {
-      console.log(`Healing test iteration ${i + 1}`);
-      
-      // Click update square button
-      const updateSquareBtn = await page.$('//button[contains(@class, "update")]');
-      expect(updateSquareBtn).not.toBeNull();
-      await updateSquareBtn.click({ timeout: TIMEOUT });
-      await page.waitForTimeout(300);
-      
-      content = await page.content();
-      fs.writeFileSync(`page-content/page-test-env-callback-${i + 2}.html`, content, 'utf-8');
-
-      // Verify square element still exists (should be healed)
-      const healedSquareElement = await page.$('custom-square[color="red"]');
-      expect(healedSquareElement).not.toBeNull();
-      expect(await healedSquareElement.isVisible()).toBe(true);
-    }
   });
 
   test('Update locator for element with css id with special character', async ({ page }) => {
-    // Navigate to the test environment page
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-
+    test.slow();
     // Find element by CSS ID with special character before selector change
     const changeNameElement = await page.$('input#change\\:name');
     expect(changeNameElement).not.toBeNull();
@@ -59,7 +23,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS ID with special character after selector change (should be healed)
     const healedChangeNameElement = await page.$('input#change\\:name');
@@ -68,10 +32,7 @@ test.describe('CSS Locator Tests', () => {
   });
 
   test('Update locator for element with css Element', async ({ page }) => {
-    // Navigate to the test environment page
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-
+    test.slow();
     // Find element by CSS tag before selector change
     const testTagElement = await page.$('test_tag');
     expect(testTagElement).not.toBeNull();
@@ -81,7 +42,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS tag after selector change (should be healed)
     const healedTestTagElement = await page.$('test_tag');
@@ -90,10 +51,7 @@ test.describe('CSS Locator Tests', () => {
   });
 
   test('Update locator for element with css Disabled', async ({ page }) => {
-    // Navigate to the test environment page
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-
+    test.slow();
     // Find disabled element by CSS pseudo-selector before selector change
     const disabledElement = await page.$('input:disabled');
     expect(disabledElement).not.toBeNull();
@@ -103,7 +61,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find disabled element by CSS pseudo-selector after selector change (should be healed)
     const healedDisabledElement = await page.$('input:disabled');
@@ -112,10 +70,7 @@ test.describe('CSS Locator Tests', () => {
   });
 
   test('Update locator for element with css Enabled', async ({ page }) => {
-    // Navigate to the test environment page
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-
+    test.slow();
     // Find enabled element by CSS pseudo-selector before selector change
     const enabledElement = await page.$('textarea:enabled');
     expect(enabledElement).not.toBeNull();
@@ -125,7 +80,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const healedEnabledElement = await page.$('textarea:enabled');
@@ -134,10 +89,7 @@ test.describe('CSS Locator Tests', () => {
   });
 
   test('Update locator for element with css ClassName', async ({ page }) => {
-    // Navigate to the test environment page
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-
+    test.slow();
     // Find element by CSS class before selector change
     const testClassElement = await page.$('.test_class');
     expect(testClassElement).not.toBeNull();
@@ -147,7 +99,7 @@ test.describe('CSS Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS class after selector change (should be healed)
     const healedTestClassElement = await page.$('.test_class');

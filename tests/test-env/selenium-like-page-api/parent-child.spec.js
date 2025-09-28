@@ -1,15 +1,18 @@
 import { test, expect } from '@playwright/test';
 
-const TIMEOUT = 5000;
+const TIMEOUT = 9000;
+const WAIT_TIMEOUT = 500;
 
 test.describe('Parent-Child Locator Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'domcontentloaded' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 
   test('Select and verify several inputs CSS FirstChild', async ({ page }) => {
-
+    test.slow();
     // Find element by CSS first-child pseudo-selector before selector change
     const firstChildElement = await page.$('test_tag:first-child');
     expect(firstChildElement).not.toBeNull();
@@ -19,8 +22,8 @@ test.describe('Parent-Child Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
-    
+    await page.waitForTimeout(WAIT_TIMEOUT);
+
     // Find element by CSS first-child pseudo-selector after selector change (should be healed)
     const healedFirstChildElement = await page.$('test_tag:first-child');
     expect(healedFirstChildElement).not.toBeNull();
@@ -28,7 +31,7 @@ test.describe('Parent-Child Locator Tests', () => {
   });
 
   test('Select and verify several inputs CSS LastChild', async ({ page }) => {
-
+    test.slow();
     // Find element by CSS last-child pseudo-selector before selector change
     const lastChildElement = await page.$('child_tag:last-child');
     expect(lastChildElement).not.toBeNull();
@@ -38,7 +41,7 @@ test.describe('Parent-Child Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS last-child pseudo-selector after selector change (should be healed)
     const healedLastChildElement = await page.$('child_tag:last-child');

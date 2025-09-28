@@ -2,13 +2,14 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('CSS 1 Locator Tests', () => {
 
   test('Update locator for element with css attribute', async ({ page }) => {
     // Navigate to the callback test page
     test.slow();
-    await page.goto('https://mdn.github.io/web-components-examples/life-cycle-callbacks/');
+    await page.goto('https://mdn.github.io/web-components-examples/life-cycle-callbacks/', { waitUntil: 'load' });
 
     let content = await page.content();
     fs.writeFileSync('page-content/page-test-env-callback.html', content, 'utf-8');
@@ -33,7 +34,7 @@ test.describe('CSS 1 Locator Tests', () => {
       const updateSquareBtn = page.locator('//button[contains(@class, "update")]');
       await expect(updateSquareBtn).toBeVisible();
       await updateSquareBtn.click({ timeout: TIMEOUT });
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(WAIT_TIMEOUT);
 
       content = await page.content();
       fs.writeFileSync(`page-content/page-test-env-callback-${i + 2}.html`, content, 'utf-8');

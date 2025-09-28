@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 3000;
-const ITERATIONS = 20;
+const TIMEOUT_AFTER = 501;
+const ITERATIONS = 40;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -55,7 +56,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
             const result = await operation();
             const endTime = Date.now();
             actionExecutionTimes[operationName].push(endTime - startTime);
-            await page.waitForTimeout(501);
+            await page.waitForTimeout(TIMEOUT_AFTER);
             return result;
         };
 

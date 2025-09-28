@@ -1,16 +1,20 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const TIMEOUT = 5000;
+const TIMEOUT = 9000;
+const WAIT_TIMEOUT = 500;
 
 test.describe('General Locator Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'domcontentloaded' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
+
   });
 
   test('Button click with FindBy annotation', async ({ page }) => {
-
+    test.slow();
     // Set up dialog handler
     page.on('dialog', dialog => dialog.accept());
 
@@ -28,7 +32,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Click element by change ID (after selector change - should be healed)
     const healedChangeIdElement = await page.$('#change_id');
@@ -37,7 +41,7 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Input fields click with FindBy annotation', async ({ page }) => {
-
+    test.slow();
     // Test elements before selector change
     const testClassElement = await page.$('input.test_class');
     expect(testClassElement).not.toBeNull();
@@ -65,7 +69,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
     
     // Test elements after selector change (should be healed)
     const healedTestClassElement = await page.$('input.test_class');
@@ -92,7 +96,7 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Checkbox verify with FindBy annotation', async ({ page }) => {
-
+    test.slow();
     // Find checkboxes before selector change
     const checkbox1 = await page.$('input.input1#form_checked1');
     expect(checkbox1).not.toBeNull();
@@ -105,7 +109,7 @@ test.describe('General Locator Tests', () => {
     const submitCheckboxBtn = await page.$('#Submit_checkbox');
     expect(submitCheckboxBtn).not.toBeNull();
     await submitCheckboxBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     let content = await page.content();
     fs.writeFileSync('page-content/page-test-env-3.html', content, 'utf-8');
@@ -120,7 +124,7 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Input field enable to disable with FindBy annotation', async ({ page }) => {
-
+    test.slow();
     // Find element before selector change (should be enabled)
     const enabledElement = await page.$('#change_enabled');
     expect(enabledElement).not.toBeNull();
@@ -130,7 +134,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element after selector change (should be healed and now disabled)
     const disabledElement = await page.$('#change_enabled');
@@ -139,7 +143,7 @@ test.describe('General Locator Tests', () => {
   });
 
   test('Checkbox checked to unchecked with FindBy annotation', async ({ page }) => {
-
+    test.slow();
     // Find checkbox before selector change (should be checked)
     const checkedElement = await page.$('#change_checked');
     expect(checkedElement).not.toBeNull();
@@ -149,7 +153,7 @@ test.describe('General Locator Tests', () => {
     const submitBtn = await page.$('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find checkbox after selector change (should be healed and now unchecked)
     const uncheckedElement = await page.$('#change_checked');

@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 3000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 
   test('isChecked', async ({ page }) => {
@@ -20,7 +23,7 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     const submitBtn = page.locator('#Submit_checkbox');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedCheckbox = page.locator('input.input1#form_checked1');

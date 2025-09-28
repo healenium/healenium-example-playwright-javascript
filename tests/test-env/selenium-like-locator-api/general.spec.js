@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 3000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('General Locator API Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 
   test('Button click with FindBy annotation', async ({ page }) => {
@@ -19,18 +22,16 @@ test.describe('General Locator API Tests', () => {
     
     // Click element by change ID (before selector change)
     const changeIdElement = page.locator('#change_id');
-    // await expect(changeIdElement).toBeVisible();
     await changeIdElement.press('Enter', { timeout: TIMEOUT });
 
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Click element by change ID (after selector change - should be healed)
     const healedChangeIdElement = page.locator('#change_id');
-    // await expect(healedChangeIdElement).toBeVisible();
     await healedChangeIdElement.press('Enter', { timeout: TIMEOUT });
   });
 
@@ -63,7 +64,7 @@ test.describe('General Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test elements after selector change (should be healed)
     const healedTestClassElement = page.locator('input.test_class');
@@ -105,7 +106,7 @@ test.describe('General Locator API Tests', () => {
     const submitCheckboxBtn = page.locator('#Submit_checkbox');
     await expect(submitCheckboxBtn).toBeVisible();
     await submitCheckboxBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find checkboxes after selector change (should be healed)
     const healedCheckbox1 = page.locator('input.input1#form_checked1');
@@ -128,7 +129,7 @@ test.describe('General Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element after selector change (should be healed and now disabled)
     const disabledElement = page.locator('#change_enabled');
@@ -148,8 +149,8 @@ test.describe('General Locator API Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(300);
-    
+    await page.waitForTimeout(WAIT_TIMEOUT);
+
     // Find checkbox after selector change (should be healed and now unchecked)
     const uncheckedElement = page.locator('#change_checked');
     await expect(uncheckedElement).toBeVisible();

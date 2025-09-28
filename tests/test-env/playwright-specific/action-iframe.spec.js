@@ -1,11 +1,14 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - iFrame Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
+    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
+    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+
   });
 /*
   test('iframe input click action', async ({ page }) => {
@@ -26,7 +29,7 @@ test.describe('Locator API - iFrame Action Methods - Tests', () => {
     const submitBtn = iframe.locator('#iframe_Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = iframe.locator('#iframe_input');
@@ -49,7 +52,7 @@ test.describe('Locator API - iFrame Action Methods - Tests', () => {
     const submitBtn = iframe.locator('#iframe_Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedSelectElement = iframe.locator('#iframe_select_item');
