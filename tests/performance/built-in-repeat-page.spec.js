@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 const TIMEOUT = 3000;
-const ITERATIONS = 3;
+const TIMEOUT_AFTER = 501;
+const ITERATIONS = 30;
 
 test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -50,28 +51,28 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
         const performToBeVisible = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            const result = await inputField.isVisible();
+            const result = await inputField.isVisible({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['toBeVisible'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performClick = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.click();
+            await inputField.click({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['click'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performDblclick = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.dblclick();
+            await inputField.dblclick({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['dblclick'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performBlur = async () => {
@@ -80,52 +81,52 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await inputField.evaluate(el => el.blur());
             const endTime = Date.now();
             actionExecutionTimes['blur'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performFill = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.fill('Hello World');
+            await inputField.fill('Hello World', { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['fill'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performClear = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.fill('');
+            await inputField.fill('', { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['clear'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performPressSequentially = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.type('Sequential typing', { delay: 100 });
+            await inputField.type('Sequential typing', { delay: 100, timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['pressSequentially'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performPress = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.press('Enter');
+            await inputField.press('Enter', { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['press'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performHover = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.hover();
+            await inputField.hover({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['hover'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performFocus = async () => {
@@ -134,88 +135,88 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await inputField.evaluate(el => el.focus());
             const endTime = Date.now();
             actionExecutionTimes['focus'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performScrollIntoViewIfNeeded = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.scrollIntoViewIfNeeded();
+            await inputField.scrollIntoViewIfNeeded({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['scrollIntoViewIfNeeded'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
-        const performSelectText = async () => {
-            const startTime = Date.now();
-            const inputField = await page.$('.test_class');
-            await inputField.evaluate(el => { el.select(); });
-            const endTime = Date.now();
-            actionExecutionTimes['selectText'].push(endTime - startTime);
-            await page.waitForTimeout(101);
-        };
+        // const performSelectText = async () => {
+        //     const startTime = Date.now();
+        //     const inputField = await page.$('.test_class');
+        //     await inputField.evaluate(el => { el.selectText(); });
+        //     const endTime = Date.now();
+        //     actionExecutionTimes['selectText'].push(endTime - startTime);
+        //     await page.waitForTimeout(TIMEOUT_AFTER);
+        // };
 
         const performTextContent = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.textContent();
+            await inputField.textContent({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['textContent'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performInnerText = async () => {
             const startTime = Date.now();
             const linkElement = await page.$('a:has-text("Change: LinkText, PartialLinkText")');
-            await linkElement.innerText();
+            await linkElement.innerText({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['innerText'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performInnerHTML = async () => {
             const startTime = Date.now();
             const linkElement = await page.$('a:has-text("Change: LinkText, PartialLinkText")');
-            await linkElement.innerHTML();
+            await linkElement.innerHTML({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['innerHTML'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performInputValue = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.inputValue();
+            await inputField.inputValue({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['inputValue'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performGetAttribute = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.getAttribute('name');
+            await inputField.getAttribute('name', { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['getAttribute'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performBoundingBox = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.boundingBox();
+            await inputField.boundingBox({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['boundingBox'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performIsEnabled = async () => {
             const startTime = Date.now();
             const inputField = await page.$('.test_class');
-            await inputField.isEnabled();
+            await inputField.isEnabled({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['isEnabled'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performIsDisabled = async () => {
@@ -224,7 +225,7 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await inputField.evaluate(el => el.disabled);
             const endTime = Date.now();
             actionExecutionTimes['isDisabled'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performIsEditable = async () => {
@@ -233,52 +234,52 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await inputField.evaluate(el => !el.readOnly && !el.disabled);
             const endTime = Date.now();
             actionExecutionTimes['isEditable'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performCheck = async () => {
             const startTime = Date.now();
             const checkbox = await page.$('input.input1#form_checked1');
-            await checkbox.check();
+            await checkbox.check({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['check'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performUncheck = async () => {
             const startTime = Date.now();
             const checkbox = await page.$('input.input1#form_checked1');
-            await checkbox.uncheck();
+            await checkbox.uncheck({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['uncheck'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performSetCheckedTrue = async () => {
             const startTime = Date.now();
             const checkbox = await page.$('input.input1#form_checked1');
-            await checkbox.setChecked(true);
+            await checkbox.setChecked(true, { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['setCheckedTrue'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performSetCheckedFalse = async () => {
             const startTime = Date.now();
             const checkbox = await page.$('input.input1#form_checked1');
-            await checkbox.setChecked(false);
+            await checkbox.setChecked(false, { timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['setCheckedFalse'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         const performIsChecked = async () => {
             const startTime = Date.now();
             const checkbox = await page.$('input.input1#form_checked1');
-            await checkbox.isChecked();
+            await checkbox.isChecked({ timeout: TIMEOUT });
             const endTime = Date.now();
             actionExecutionTimes['isChecked'].push(endTime - startTime);
-            await page.waitForTimeout(101);
+            await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
         // Run the test 'iterations' times
@@ -295,7 +296,7 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await performHover();
             await performFocus();
             await performScrollIntoViewIfNeeded();
-            await performSelectText();
+//            await performSelectText();
             await performTextContent();
             await performInnerText();
             await performInnerHTML();

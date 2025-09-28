@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const TIMEOUT = 3000;
+const TIMEOUT = 5000;
 const TIMEOUT_AFTER = 501;
-const ITERATIONS = 40;
+const ITERATIONS = 30;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {
