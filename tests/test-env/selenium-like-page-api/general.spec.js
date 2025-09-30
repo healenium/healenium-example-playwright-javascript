@@ -1,16 +1,14 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const TIMEOUT = 9000;
-const WAIT_TIMEOUT = 500;
+const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('General Locator Tests', () => {
   test.beforeEach(async ({ page }) => {
     // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
-    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'domcontentloaded' });
-    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
-
-
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('Button click with FindBy annotation', async ({ page }) => {

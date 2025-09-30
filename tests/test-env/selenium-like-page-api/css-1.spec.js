@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const TIMEOUT = 9000;
-const WAIT_TIMEOUT = 500;
+const TIMEOUT = 5000;
+const WAIT_TIMEOUT = 250;
 
 test.describe('CSS 1 Locator Tests', () => {
 
