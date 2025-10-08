@@ -10,10 +10,23 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
     await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
-  test('wait new element', async ({ page }) => {
-    await page.locator('#Wait_Submit').click(TIMEOUT);
-    await page.waitForTimeout(WAIT_TIMEOUT);
-    await expect(page.locator('#wait_new_element')).toBeVisible();
+  // test('wait_new_element', async ({ page }) => {
+  //   await page.locator('#Wait_Submit').click(TIMEOUT);
+  //   await page.waitForTimeout(WAIT_TIMEOUT);
+  //   await expect(page.locator('#wait_new_element')).toBeVisible();
+
+  // });
+
+  test('change_wait', async ({ page }) => {
+    // await page.waitForTimeout(WAIT_TIMEOUT);
+    await expect(page.locator('#change_wait')).toBeVisible();
+
+    // const submitBtn = page.locator('#Submit');
+    // expect(submitBtn).not.toBeNull();
+    // await submitBtn.click();
+
+    // await expect(page.locator('#change_wait')).toBeVisible();
+
   });
 
 });

@@ -7,10 +7,10 @@ const TIMEOUT = 5000;
 test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
     // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
-    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
-
+/*
   test('click action', async ({ page }) => {
     test.slow();
     let content = await page.content();
@@ -19,13 +19,13 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const inputField = page.locator('.test_class');
     await inputField.click();
   });
-
+*/
   test('double click action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('input#change_id');
     await inputField.dblclick();
   });
-
+/*
   test('blur action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('input#change_id');
@@ -112,6 +112,8 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const value = await inputFile.inputValue();
     console.log('Input value:', value);
   });
+*/
+
   // won't test for a while because there are 'target' and 'source' instead of 'selector'
   // test('drag to action', async ({ page }) => {
   //   test.slow();

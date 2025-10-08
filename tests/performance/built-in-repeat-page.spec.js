@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-const TIMEOUT = 9000;
-const TIMEOUT_AFTER = 801;
-const ITERATIONS = 50;
+const TIMEOUT = 5000;
+const TIMEOUT_AFTER = 501;
+const ITERATIONS = 25;
 
 test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page }) => {

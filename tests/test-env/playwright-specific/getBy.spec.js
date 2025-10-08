@@ -1,14 +1,12 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - getBy - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
-    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('getByRole - img - alt', async ({ page }) => {
@@ -66,9 +64,6 @@ test.describe('Locator API - getBy - Tests', () => {
 
     // Test healing - same action should work after locator change    
     await expect(page.getByText('Green Item')).toBeVisible({ TIMEOUT });
-
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-GetBy.html', content, 'utf-8');
   });
 
   test('getByLabel', async ({ page }) => {
