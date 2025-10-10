@@ -1,14 +1,11 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
 
 test.describe('General Locator Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('Button click with FindBy annotation', async ({ page }) => {
@@ -108,9 +105,6 @@ test.describe('General Locator Tests', () => {
     expect(submitCheckboxBtn).not.toBeNull();
     await submitCheckboxBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
-
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-3.html', content, 'utf-8');
 
     // Find checkboxes after selector change (should be healed)
     const healedCheckbox1 = await page.$('input.input1#form_checked1');

@@ -5,9 +5,7 @@ const WAIT_TIMEOUT = 250;
 
 test.describe('Simple Locator API Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('Update locator for element with css id', async ({ page }) => {

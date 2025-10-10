@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
@@ -11,16 +10,10 @@ test.describe('CSS 1 Locator Tests', () => {
     test.slow();
     await page.goto('https://mdn.github.io/web-components-examples/life-cycle-callbacks/', { waitUntil: 'load' });
 
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-callback.html', content, 'utf-8');
-
     // Click add square button and verify square element
     const addSquareBtn = page.locator('//button[contains(@class, "add")]');
     await expect(addSquareBtn).toBeVisible();
     await addSquareBtn.click({ timeout: TIMEOUT });
-
-    content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-callback-1.html', content, 'utf-8');
 
     // Verify square element exists
     const squareElement = page.locator('custom-square[color="red"]');
@@ -35,9 +28,6 @@ test.describe('CSS 1 Locator Tests', () => {
       await expect(updateSquareBtn).toBeVisible();
       await updateSquareBtn.click({ timeout: TIMEOUT });
       await page.waitForTimeout(WAIT_TIMEOUT);
-
-      content = await page.content();
-      fs.writeFileSync(`page-content/page-test-env-callback-${i + 2}.html`, content, 'utf-8');
 
       // Verify square element still exists (should be healed)
       const healedSquareElement = page.locator('custom-square[color="red"]');

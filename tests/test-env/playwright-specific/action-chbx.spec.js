@@ -1,21 +1,15 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - CheckBox Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('check action', async ({ page }) => {
     test.slow();
-
-    let content = await page.content();
-    fs.writeFileSync('page-content/page-test-env.html', content, 'utf-8');
 
     const checkbox = page.locator('input.input1#form_checked1');
     await checkbox.check({ timeout: TIMEOUT });
@@ -26,9 +20,6 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
     await page.waitForTimeout(WAIT_TIMEOUT);
-
-    content = await page.content();
-    fs.writeFileSync('page-content/page-test-env-#Submit_checkbox.html', content, 'utf-8');
 
     // Test healing - same action should work after locator change
     const healedCheckbox = page.locator('input.input1#form_checked1');

@@ -1,14 +1,11 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - iframe - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
-    // await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
-    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('iframe', async ({ page }) => {
