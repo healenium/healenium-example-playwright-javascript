@@ -1,20 +1,22 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
+const workerId = process.env.TEST_WORKER_INDEX || '0';
+
 const TIMEOUT = 5000;
-const TIMEOUT_AFTER = 501;
-const ITERATIONS = 25;
+const TIMEOUT_AFTER = 201;
+const ITERATIONS = 20;
 
 test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
-    test.beforeEach(async ({ page }) => {
-        // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-        await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-        // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
-        await page.waitForTimeout(100);
+    test.beforeEach(async ({ page, context }) => {
+        await context.clearCookies();
+        await context.clearPermissions();
+        await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
     });
 
-    test('Action methods with repeat using page.$', async ({ page }, testInfo) => {
-        //test.slow();
+
+    test('Action methods with repeat using page.$', async ({ page }) => {
+        test.slow();
         test.setTimeout(10000_000);
 
         // Initialize execution time arrays for each action
@@ -147,14 +149,14 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await page.waitForTimeout(TIMEOUT_AFTER);
         };
 
-        // const performSelectText = async () => {
-        //     const startTime = Date.now();
-        //     const inputField = await page.$('.test_class');
-        //     await inputField.evaluate(el => { el.selectText(); });
-        //     const endTime = Date.now();
-        //     actionExecutionTimes['selectText'].push(endTime - startTime);
-        //     await page.waitForTimeout(TIMEOUT_AFTER);
-        // };
+        const performSelectText = async () => {
+            const startTime = Date.now();
+            const inputField = await page.$('.test_class');
+            await inputField.selectText({ timeout: TIMEOUT });
+            const endTime = Date.now();
+            actionExecutionTimes['selectText'].push(endTime - startTime);
+            await page.waitForTimeout(TIMEOUT_AFTER);
+        };
 
         const performTextContent = async () => {
             const startTime = Date.now();
@@ -296,7 +298,7 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
             await performHover();
             await performFocus();
             await performScrollIntoViewIfNeeded();
-//            await performSelectText();
+            await performSelectText();
             await performTextContent();
             await performInnerText();
             await performInnerHTML();
@@ -319,78 +321,14 @@ test.describe('Page.$ API - Checkbox Information Methods - Tests', () => {
 
             // Log progress
             if ((i + 1) % 5 === 0) {
-                console.log(`Completed ${i + 1}/${ITERATIONS} iterations`);
+                console.log(`run-${workerId} Completed ${i + 1}/${ITERATIONS} iterations`);
             }
         }
 
-        // Calculate statistics for each action
-        const actionStats = {};
-        for (const [actionName, times] of Object.entries(actionExecutionTimes)) {
-            const avgTime = times.reduce((a, b) => a + b, 0) / times.length;
-            const minTime = Math.min(...times);
-            const maxTime = Math.max(...times);
-
-            actionStats[actionName] = {
-                average: avgTime.toFixed(2),
-                min: minTime,
-                max: maxTime,
-                total: times.reduce((a, b) => a + b, 0),
-                allTimes: times
-            };
-        }
-
-        // Display results
-        console.log('\n=== PERFORMANCE RESULTS BY ACTION ===');
-        console.log(`Iterations: ${ITERATIONS}`);
-        console.log(`actionName \tAvg ms \tMin ms\t Max ms`);
-        for (const [actionName, stats] of Object.entries(actionStats)) {
-            console.log(`${actionName} tt ${stats.average} tt ${stats.min} tt ${stats.max}`);
-        }
-
         // Save results to file
-        const report = await buildPerformanceReport(testInfo, actionStats, actionExecutionTimes);
-
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        const filename = testInfo.outputPath(`performance-report-page-dollar-${timestamp}.json`);
-        fs.writeFileSync(filename, JSON.stringify(report, null, 2));
-        console.log(`\nPerformance report saved to: ${filename}`);
-
-        // attach to report
-        attachTestResults(testInfo, actionStats, actionExecutionTimes);
+        fs.writeFileSync(`performance-reports/run-${workerId}.json`, JSON.stringify(actionExecutionTimes, null, 2), 'utf-8');
+        console.log(`run-${workerId} done`);
     });
 
-
-    async function buildPerformanceReport(testInfo, actionStats, actionExecutionTimes) {
-
-        return {
-            testName: testInfo.title,
-            timestamp: new Date().toISOString(),
-            iterations: ITERATIONS,
-            actionStatistics: actionStats,
-            detailedExecutionTimes: actionExecutionTimes
-        };
-
-    }
-
-    async function attachTestResults(testInfo, actionStats, actionExecutionTimes) {
-        await testInfo.attach('performance-stats', {
-            body: JSON.stringify({
-                iterations: ITERATIONS,
-                actionStatistics: actionStats,
-                detailedExecutionTimes: actionExecutionTimes
-            }, null, 2),
-            contentType: 'application/json'
-        });
-    }
 });
 
-/*
-# Run the test
-npx playwright test tests/performance/built-in-repeat-page-dollar.spec.js
-
-# Run with specific timeout (for longer tests)
-npx playwright test tests/performance/built-in-repeat-page-dollar.spec.js --timeout=9000000
-
-# Run in headed mode to see the browser
-npx playwright test tests/performance/built-in-repeat-page-dollar.spec.js --headed
-*/
