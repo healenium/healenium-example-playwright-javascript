@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 
 const TIMEOUT = 5000;
-const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -19,7 +18,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -35,7 +33,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('input#change_id');
@@ -51,7 +48,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('input#change_id');
@@ -71,7 +67,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -92,7 +87,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -113,7 +107,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -133,8 +126,7 @@ test.describe('Locator API - Action Methods - Tests', () => {
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
+    await submitBtn.click();  
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('input#change_id');
@@ -153,7 +145,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('input#change_id');
@@ -172,7 +163,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same actions should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -195,7 +185,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -220,7 +209,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('.test_class');
@@ -243,7 +231,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedSelectElement = page.locator('#select_item');
@@ -264,8 +251,7 @@ test.describe('Locator API - Action Methods - Tests', () => {
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     expect(submitBtn).not.toBeNull();
-    await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
+    await submitBtn.click();  
 
     // Test healing - same action should work after locator change
     const healedInputFile = page.locator('#file_input');
@@ -275,15 +261,5 @@ test.describe('Locator API - Action Methods - Tests', () => {
 
     expect(healedValue).toBe(value);
   });
-
-  // won't test for a while because there are 'target' and 'source' instead of 'selector'
-  // test('drag to action', async ({ page }) => {
-  //   test.slow();
-  //   // visually nothing noticeable will happen because the input isn't configured to be draggable
-  //   // actually we should  test on elements that are designed to be draggable
-  //   const inputField = page.locator('.test_class');
-  //   const wrapDiv = page.locator('.shadow-input1');
-  //   await inputField.dragTo(wrapDiv, { timeout: clickTimeout });
-  // });
 
 });

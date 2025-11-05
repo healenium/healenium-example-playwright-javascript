@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 3000;
-const WAIT_TIMEOUT = 250;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -20,7 +19,6 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     const submitBtn = page.locator('#Submit_checkbox');
     expect(submitBtn).not.toBeNull();
     await submitBtn.click();
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedCheckbox = page.locator('input.input1#form_checked1');

@@ -27,7 +27,6 @@ test.describe('CSS 1 Locator Tests', () => {
       const updateSquareBtn = page.locator('//button[contains(@class, "update")]');
       await expect(updateSquareBtn).toBeVisible();
       await updateSquareBtn.click({ timeout: TIMEOUT });
-      await page.waitForTimeout(WAIT_TIMEOUT);
 
       // Verify square element still exists (should be healed)
       const healedSquareElement = page.locator('custom-square[color="red"]');

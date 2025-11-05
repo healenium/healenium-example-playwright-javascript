@@ -20,7 +20,6 @@ test.describe('CSS 2 Locator Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS ID with special character after selector change (should be healed)
     const healedChangeNameElement = page.locator('input#change\\:name');
@@ -38,7 +37,6 @@ test.describe('CSS 2 Locator Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS tag after selector change (should be healed)
     const healedTestTagElement = page.locator('test_tag');
@@ -56,7 +54,6 @@ test.describe('CSS 2 Locator Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find disabled element by CSS pseudo-selector after selector change (should be healed)
     const healedDisabledElement = page.locator('input:disabled');
@@ -74,7 +71,6 @@ test.describe('CSS 2 Locator Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const healedEnabledElement = page.locator('textarea:enabled');
@@ -92,7 +88,6 @@ test.describe('CSS 2 Locator Tests', () => {
     const submitBtn = page.locator('#Submit');
     await expect(submitBtn).toBeVisible();
     await submitBtn.click({ timeout: TIMEOUT });
-    await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Find element by CSS class after selector change (should be healed)
     const healedTestClassElement = page.locator('.test_class');
