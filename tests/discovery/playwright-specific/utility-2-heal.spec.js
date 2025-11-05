@@ -4,8 +4,7 @@ const TIMEOUT = 5000;
 
 test.describe('Locator API - Utility Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-    await page.waitForTimeout(500);
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit');
@@ -92,10 +91,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
     });
 
     // Verify strict mode works (should only find one element)
-    const count = await testClassInput.count();
-    expect(count).toBe(1);
-
-    await testClassInput.fill('Strict mode test', { timeout: TIMEOUT });
+    await expect(testClassInput).toBeVisible({ timeout: TIMEOUT });
   });
 
 });

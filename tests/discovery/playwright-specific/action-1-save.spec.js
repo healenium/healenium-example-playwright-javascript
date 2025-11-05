@@ -6,7 +6,6 @@ const TIMEOUT = 5000;
 
 test.describe('Locator API - Action Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html', { waitUntil: 'load' });
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
     // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
   });
@@ -112,16 +111,5 @@ test.describe('Locator API - Action Methods - Tests', () => {
     const value = await inputFile.inputValue();
     console.log('Input value:', value);
   });
-
-
-  // won't test for a while because there are 'target' and 'source' instead of 'selector'
-  // test('drag to action', async ({ page }) => {
-  //   test.slow();
-  //   // visually nothing noticeable will happen because the input isn't configured to be draggable
-  //   // actually we should  test on elements that are designed to be draggable
-  //   const inputField = page.locator('.test_class');
-  //   const wrapDiv = page.locator('.shadow-input1');
-  //   await inputField.dragTo(wrapDiv, { timeout: clickTimeout });
-  // });
 
 });

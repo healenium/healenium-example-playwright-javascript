@@ -3,8 +3,7 @@ const TIMEOUT = 5000;
 
 test.describe('Deprecated ElementHandle Methods - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-    await page.waitForTimeout(500);
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('elementHandle() method - get single ElementHandle (deprecated)', async ({ page }) => {

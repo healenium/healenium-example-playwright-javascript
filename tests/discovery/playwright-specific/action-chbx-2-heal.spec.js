@@ -5,8 +5,7 @@ const TIMEOUT = 5000;
 
 test.describe('Locator API - CheckBox Action Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-    await page.waitForTimeout(500);
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit_checkbox');

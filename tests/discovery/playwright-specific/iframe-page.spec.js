@@ -7,7 +7,7 @@ test.describe('Locator API - iframe - Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
-/*
+
   test('iframe - change frame title - healing', async ({ page }) => {
     test.slow();
 
@@ -48,7 +48,7 @@ test.describe('Locator API - iframe - Tests', () => {
     expect(healedInputField).not.toBeNull();
     await healedInputField.click({ timeout: TIMEOUT });
   });
-*/
+
   test('iframe - change nested frame - healing', async ({ page }) => {
     test.slow();
 
@@ -78,7 +78,7 @@ test.describe('Locator API - iframe - Tests', () => {
     expect(healedInputField).not.toBeNull();
     await healedInputField.click({ timeout: TIMEOUT });
   });
-/*
+
   test('iframe - change frame title & input field - healing', async ({ page }) => {
     test.slow();
 
@@ -201,5 +201,5 @@ test.describe('Locator API - iframe - Tests', () => {
     expect(newInputField).not.toBeNull();
     await newInputField.click({ timeout: TIMEOUT });
   });
-*/
+
 });

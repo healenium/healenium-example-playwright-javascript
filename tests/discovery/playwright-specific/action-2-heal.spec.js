@@ -2,15 +2,10 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 
-const TIMEOUT = 5000;
-
 test.describe('Locator API - Action Methods - HEAL Tests', () => {
   test.beforeEach(async ({ page }) => {
-    // await page.goto('https://elenastepuro.github.io/test_env/index.html');
-    // await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-    await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html');
-
-    await page.waitForTimeout(500);
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    // await page.goto('file:///D:/EPM-HLM/repo/healenium-test-env/index.html', { waitUntil: 'load' });
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit');
@@ -19,7 +14,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
 
     await page.waitForTimeout(500);
   });
-/*
+
   test('click action', async ({ page }) => {
     test.slow();
     let content = await page.content();
@@ -95,7 +90,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     await inputField.scrollIntoViewIfNeeded();
     await expect(inputField).toBeVisible();
   });
-*/
+
   test('select text action', async ({ page }) => {
     test.slow();
     const inputField = page.locator('.test_class');
@@ -103,7 +98,7 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     await inputField.selectText();
     await expect(inputField).toBeFocused();
   });
-/*
+
   test('select Option action', async ({ page }) => {
     test.slow();
     const selectElement = page.locator('#select_item');
@@ -121,5 +116,5 @@ test.describe('Locator API - Action Methods - HEAL Tests', () => {
     const value = await inputFile.inputValue();
     console.log('Input value:', value);
   });
-*/
+
 });

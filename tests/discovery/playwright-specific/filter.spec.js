@@ -1,11 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 const TIMEOUT = 5000;
 
 test.describe('Locator Filter - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html');
-    await page.waitForTimeout(500);
+    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
 
   test('hasText', async ({ page }) => {

@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 
-const TIMEOUT = 5000;
+// won't heal script
 
 test.describe('Locator API - CheckBox Action Methods - Tests', () => {
 
