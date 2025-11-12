@@ -8,7 +8,7 @@ test.describe('Locator Pseudo-class - Tests', () => {
   });
 
   test('all', async ({ page }) => {
-    /*
+
     await page.locator('input:visible').first().click({ timeout: TIMEOUT });
     //button:visible >> nth=0
     await page.locator(':has-text( "Generate alert") >> nth=0').click({ timeout: TIMEOUT });
@@ -41,7 +41,7 @@ test.describe('Locator Pseudo-class - Tests', () => {
     //#main_form >> input >> nth=0
     await page.locator('role=link').first().hover({ timeout: TIMEOUT });
     //role=link >> nth=0
-*/
+
     await page.locator('text=Generate alert').click({ timeout: TIMEOUT });
     //text=Generate alert
     await page.locator('data-testid=change_testId').click({ timeout: TIMEOUT });

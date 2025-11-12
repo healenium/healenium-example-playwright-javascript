@@ -5,7 +5,7 @@ const workerId = process.env.TEST_WORKER_INDEX || '0';
 
 const TIMEOUT = 5000;
 const TIMEOUT_AFTER = 201;
-const ITERATIONS = 5;
+const ITERATIONS = 30;
 
 test.describe('Locator API - Checkbox Information Methods - Tests', () => {
     test.beforeEach(async ({ page, context  }) => {
