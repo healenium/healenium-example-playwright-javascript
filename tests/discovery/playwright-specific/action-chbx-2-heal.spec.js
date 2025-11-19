@@ -9,7 +9,6 @@ test.describe('Locator API - CheckBox Action Methods - HEAL Tests', () => {
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     await page.waitForTimeout(500);

@@ -16,7 +16,6 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -32,8 +31,7 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
     await expect(checkbox2).not.toBeChecked();
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit_checkbox'); 
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -49,8 +47,7 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
     await expect(checkbox).toBeChecked();
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit_checkbox'); 
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -66,8 +63,7 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
     await expect(checkbox2).not.toBeChecked();
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit_checkbox'); 
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -87,7 +83,6 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 const TIMEOUT = 5000;
 
@@ -16,7 +16,6 @@ test.describe('Locator API - Drag Ang Drop - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -34,7 +33,6 @@ test.describe('Locator API - Drag Ang Drop - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -52,7 +50,6 @@ test.describe('Locator API - Drag Ang Drop - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -70,7 +67,6 @@ test.describe('Locator API - Drag Ang Drop - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change

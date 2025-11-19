@@ -20,7 +20,6 @@ test.describe('Locator API - CheckBox Action Methods - Tests', () => {
 
     // click on button id=#Submit will change input id="change_wait" to id="newWaitId"
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Find input after id change (should be healed)

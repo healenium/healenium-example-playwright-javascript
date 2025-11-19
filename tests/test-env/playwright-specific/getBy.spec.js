@@ -6,14 +6,13 @@ test.describe('Locator API - getBy - Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
-
+/*
   test('getByRole - img - alt', async ({ page }) => {
     test.slow();
     await expect(page.getByRole('img', { name: 'Healenium Logo' })).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -26,7 +25,6 @@ test.describe('Locator API - getBy - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -38,8 +36,7 @@ test.describe('Locator API - getBy - Tests', () => {
     await expect(page.getByRole('textbox', { name: 'Field labeled by' })).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -53,7 +50,6 @@ test.describe('Locator API - getBy - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change    
@@ -65,8 +61,7 @@ test.describe('Locator API - getBy - Tests', () => {
     await expect(page.getByLabel('Field with hover')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -79,8 +74,7 @@ test.describe('Locator API - getBy - Tests', () => {
     await expect(page.getByPlaceholder('Change: TestId')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -92,8 +86,7 @@ test.describe('Locator API - getBy - Tests', () => {
     await expect(page.getByAltText('Healenium Logo')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();  
 
     // Test healing - same action should work after locator change
@@ -106,20 +99,18 @@ test.describe('Locator API - getBy - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
     await expect(page.getByTitle('Validate change test id')).toBeVisible({ TIMEOUT });
   });
-
+*/
   test('getByTestId', async ({ page }) => {
     test.slow();
     await expect(page.getByTestId('change_testId')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change

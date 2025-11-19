@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 250;
@@ -13,18 +13,19 @@ test.describe('Locator API - iframe - Tests', () => {
 
     const iframeElement = await page.$('iframe[title="Iframe Example"]');
     const iframe = await iframeElement.contentFrame();
-    expect(iframe).not.toBeNull();
+    const inputField = await iframe.$('#iframe_input');
+    await inputField.click({ timeout: TIMEOUT });
 
     // Click Change locators button 
     const submitBtn = await page.$('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedIframeElement = await page.$('iframe[title="Iframe Example"]');
     const healedIframe = await healedIframeElement.contentFrame();
-    expect(healedIframe).not.toBeNull();
+    const healedInputField = await healedIframe.$('#iframe_input');
+    await healedInputField.click({ timeout: TIMEOUT });
   });
 
   test('iframe - change input field - healing', async ({ page }) => {
@@ -32,20 +33,16 @@ test.describe('Locator API - iframe - Tests', () => {
 
     const iframeElement = await page.$('iframe[title="Iframe Example"]');
     const iframe = await iframeElement.contentFrame();
-    expect(iframe).not.toBeNull();
     const inputField = await iframe.$('#iframe_input');
-    expect(inputField).not.toBeNull();
     await inputField.click({ timeout: TIMEOUT });
 
     // Click iframe Change locators button 
     const iframeSubmitBtn = await iframe.$('#iframe_Submit');
-    expect(iframeSubmitBtn).not.toBeNull();
     await iframeSubmitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedInputField = await iframe.$('#iframe_input');
-    expect(healedInputField).not.toBeNull();
     await healedInputField.click({ timeout: TIMEOUT });
   });
 
@@ -54,28 +51,22 @@ test.describe('Locator API - iframe - Tests', () => {
 
     const iframeElement = await page.$('iframe[title="Iframe Example"]');
     const iframe = await iframeElement.contentFrame();
-    expect(iframe).not.toBeNull();
     const inputField = await iframe.$('#iframe_input');
-    expect(inputField).not.toBeNull();
     await inputField.click({ timeout: TIMEOUT });
 
     // Click iframe Change locators button 
     const iframeSubmitBtn = await iframe.$('#iframe_Submit');
-    expect(iframeSubmitBtn).not.toBeNull();
     await iframeSubmitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
     // Click Change locators button 
     const submitBtn = await page.$('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing - same action should work after locator change
     const healedIframeElement = await page.$('iframe[title="Iframe Example"]');
     const healedIframe = await healedIframeElement.contentFrame();
-    expect(healedIframe).not.toBeNull();
     const healedInputField = await healedIframe.$('#iframe_input');
-    expect(healedInputField).not.toBeNull();
     await healedInputField.click({ timeout: TIMEOUT });
   });
 
@@ -84,28 +75,22 @@ test.describe('Locator API - iframe - Tests', () => {
 
     const iframeElement = await page.$('iframe[title="Iframe Example"]');
     const iframe = await iframeElement.contentFrame();
-    expect(iframe).not.toBeNull();
     const nestedFrameElement = await iframe.$('iframe[title="Nested iframe Example"]');
     const nestedFrame = await nestedFrameElement.contentFrame();
-    expect(nestedFrame).not.toBeNull();
     const inputField = await nestedFrame.$('#iframe_2_input');
-    expect(inputField).not.toBeNull();
     await inputField.click({ timeout: TIMEOUT });
 
     // Click iframe Change locators button 
     const iframeSubmitBtn = await iframe.$('#iframe_Submit');
-    expect(iframeSubmitBtn).not.toBeNull();
     await iframeSubmitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
 
     // Test healing nested frame after locator change
     const healedNestedFrameElement = await iframe.$('iframe[title="Iframe Example"]');
     const healedNestedFrame = await healedNestedFrameElement.contentFrame();
-    expect(healedNestedFrame).not.toBeNull();
 
     // Test healing nested frame element after locator change
     const healedInputField = await healedNestedFrame.$('#iframe_2_input');
-    expect(healedInputField).not.toBeNull();
     await healedInputField.click({ timeout: TIMEOUT });
   });
   

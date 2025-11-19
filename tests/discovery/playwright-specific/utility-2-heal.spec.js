@@ -8,7 +8,6 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
 
     // Click Change locators button to initialize the test environment
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     await page.waitForTimeout(500);

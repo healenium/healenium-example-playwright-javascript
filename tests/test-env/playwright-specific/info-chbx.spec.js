@@ -17,7 +17,6 @@ test.describe('Locator API - Checkbox Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit_checkbox');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change

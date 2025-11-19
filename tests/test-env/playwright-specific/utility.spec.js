@@ -25,7 +25,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same actions should work after locator change
@@ -57,7 +56,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -85,7 +83,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same actions should work after locator change
@@ -114,7 +111,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same actions should work after locator change
@@ -144,7 +140,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();    
 
     // Test healing - same actions should work after locator change

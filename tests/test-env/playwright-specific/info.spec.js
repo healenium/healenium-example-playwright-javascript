@@ -15,7 +15,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -32,7 +31,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -49,7 +47,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -67,7 +64,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -85,7 +81,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -102,7 +97,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -118,8 +112,7 @@ test.describe('Locator API - Information Methods - Tests', () => {
     expect(isEnabled).toBe(true);
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -135,8 +128,7 @@ test.describe('Locator API - Information Methods - Tests', () => {
     expect(isDisabled).toBe(false);
 
     // Click Change locators button to test healing
-    const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
+    const submitBtn = page.locator('#Submit');  
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
@@ -153,7 +145,6 @@ test.describe('Locator API - Information Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();
 
     // Test healing - same action should work after locator change

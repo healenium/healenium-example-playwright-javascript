@@ -14,7 +14,6 @@ test.describe('Deprecated ElementHandle Methods - Tests', () => {
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click();  
  
     const healedInputHandle = await page.locator('.test_class').elementHandle({ timeout: TIMEOUT });

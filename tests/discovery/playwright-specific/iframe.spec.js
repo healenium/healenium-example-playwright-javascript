@@ -16,11 +16,9 @@ test.describe('Locator API - iFrame Action Methods - Tests', () => {
 
     // Click iframe Change locators button 
     const iframeSubmitBtn = page.frameLocator('iframe[title="Iframe Example"]').locator('#iframe_Submit');
-    expect(iframeSubmitBtn).not.toBeNull();
     await iframeSubmitBtn.click({ timeout: TIMEOUT });
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
-    expect(submitBtn).not.toBeNull();
     await submitBtn.click({ timeout: TIMEOUT });
 
     // Test healing - same action should work after locator change
