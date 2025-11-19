@@ -6,7 +6,7 @@ test.describe('Locator API - getBy - Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
   });
-/*
+
   test('getByRole - img - alt', async ({ page }) => {
     test.slow();
     await expect(page.getByRole('img', { name: 'Healenium Logo' })).toBeVisible({ TIMEOUT });
@@ -104,7 +104,7 @@ test.describe('Locator API - getBy - Tests', () => {
     // Test healing - same action should work after locator change
     await expect(page.getByTitle('Validate change test id')).toBeVisible({ TIMEOUT });
   });
-*/
+
   test('getByTestId', async ({ page }) => {
     test.slow();
     await expect(page.getByTestId('change_testId')).toBeVisible({ TIMEOUT });
