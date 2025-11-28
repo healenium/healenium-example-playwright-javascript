@@ -42,7 +42,6 @@ test.describe('General Locator API Tests', () => {
     await expect(testTagElement).toBeVisible();
     await testTagElement.isVisible();
     const classAttr = await testTagElement.getAttribute('class');
-    console.log('classAttr', classAttr);
     expect(classAttr).toBe('shadow-input1');
 
     const changeNameElement = page.locator('input[name="change_name"]');
@@ -52,7 +51,6 @@ test.describe('General Locator API Tests', () => {
     await expect(linkElement).toBeVisible();
     await linkElement.isVisible();
     const linkClassAttr = await linkElement.getAttribute('class');
-    console.log('link classAttr', linkClassAttr);
     expect(linkClassAttr).toBe('input1');
 
     // Click Change locators button
@@ -69,7 +67,6 @@ test.describe('General Locator API Tests', () => {
     await expect(healedTestTagElement).toBeVisible();
     await healedTestTagElement.isVisible({ timeout: TIMEOUT });
     const healedClassAttr = await healedTestTagElement.getAttribute('class', { timeout: TIMEOUT });
-    console.log('healedClassAttr', healedClassAttr);
     expect(healedClassAttr).toBe(classAttr);
 
 
@@ -81,7 +78,6 @@ test.describe('General Locator API Tests', () => {
     await expect(healedLinkElement).toBeVisible();
     await healedLinkElement.isVisible();
     const healedLinkClassAttr = await healedLinkElement.getAttribute('class', { timeout: TIMEOUT });
-    console.log('healed link classAttr', healedLinkClassAttr);
     expect(healedLinkClassAttr).toBe(linkClassAttr);
   });
 
@@ -116,7 +112,7 @@ test.describe('General Locator API Tests', () => {
     // Find element before selector change (should be enabled)
     const enabledElement = page.locator('#change_enabled');
     await expect(enabledElement).toBeVisible();
-    expect(await enabledElement.isEnabled()).toBe(true);
+    await expect(enabledElement).toBeEnabled();
 
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
@@ -126,7 +122,7 @@ test.describe('General Locator API Tests', () => {
     // Find element after selector change (should be healed and now disabled)
     const disabledElement = page.locator('#change_enabled');
     await expect(disabledElement).toBeVisible();
-    expect(await disabledElement.isDisabled()).toBe(true);
+    await expect(disabledElement).toBeDisabled();
   });
 
   test('Checkbox checked to unchecked with FindBy annotation', async ({ page }) => {
@@ -135,7 +131,7 @@ test.describe('General Locator API Tests', () => {
     // Find checkbox before selector change (should be checked)
     const checkedElement = page.locator('#change_checked');
     await expect(checkedElement).toBeVisible();
-    expect(await checkedElement.isChecked()).toBe(true);
+    await expect(checkedElement).toBeChecked();
 
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
@@ -145,7 +141,7 @@ test.describe('General Locator API Tests', () => {
     // Find checkbox after selector change (should be healed and now unchecked)
     const uncheckedElement = page.locator('#change_checked');
     await expect(uncheckedElement).toBeVisible();
-    expect(await uncheckedElement.isChecked()).toBe(false);
+    await expect(uncheckedElement).not.toBeChecked();
   });
 
 });

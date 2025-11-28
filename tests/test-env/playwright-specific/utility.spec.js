@@ -48,7 +48,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const changeIdInput = page.locator('input#change_id');
     const inputAriaSnapshot = await changeIdInput.ariaSnapshot({ timeout: TIMEOUT });
     const stringifiedInputAriaSnapshot = JSON.stringify(inputAriaSnapshot, null, 2);
-    console.log('Input ARIA Snapshot:', stringifiedInputAriaSnapshot);
 
     // Verify snapshot contain expected properties
     expect(inputAriaSnapshot).toBeDefined();
@@ -62,7 +61,6 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     const healedChangeIdInput = page.locator('input#change_id');
     const healedInputAriaSnapshot = await healedChangeIdInput.ariaSnapshot({ timeout: TIMEOUT });
     const healedStringifiedInputAriaSnapshot = JSON.stringify(healedInputAriaSnapshot, null, 2);
-    console.log('Healed Input ARIA Snapshot:', healedStringifiedInputAriaSnapshot);
 
     // Verify snapshot contain expected properties
     expect(healedInputAriaSnapshot).toBeDefined();

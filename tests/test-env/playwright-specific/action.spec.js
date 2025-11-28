@@ -234,7 +234,6 @@ test.describe('Locator API - Action Methods - Tests', () => {
     await inputFile.setInputFiles(filePath, { timeout: TIMEOUT });
 
     const value = await inputFile.inputValue({ timeout: TIMEOUT });
-    console.log('Input value:', value);
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');

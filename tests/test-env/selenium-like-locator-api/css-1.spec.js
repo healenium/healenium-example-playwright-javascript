@@ -20,8 +20,6 @@ test.describe('CSS 1 Locator Tests', () => {
 
     // Test healing multiple times
     for (let i = 0; i <= 1; i++) {
-      console.log(`Healing test iteration ${i + 1}`);
-      
       // Click update square button
       const updateSquareBtn = page.locator('//button[contains(@class, "update")]');
       await expect(updateSquareBtn).toBeVisible();

@@ -39,7 +39,6 @@ test.describe('General Locator Tests', () => {
 
     const testTagElement = await page.$('test_tag#change_element');
     const classAttr = await testTagElement.getAttribute('class');
-    console.log('classAttr', classAttr);
     expect(classAttr).toBe('shadow-input1');
     await testTagElement.isVisible();
 
@@ -49,7 +48,6 @@ test.describe('General Locator Tests', () => {
     const linkElement = await page.$('a:has-text("Change: LinkText, PartialLinkText")');
     await linkElement.isVisible();
     const linkClassAttr = await linkElement.getAttribute('class');
-    console.log('link classAttr', linkClassAttr);
     expect(linkClassAttr).toBe('input1');
 
     // Click Change locators button
@@ -63,7 +61,6 @@ test.describe('General Locator Tests', () => {
 
     const healedTestTagElement = await page.$('test_tag#change_element');
     const healedClassAttr = await healedTestTagElement.getAttribute('class');
-    console.log('healedClassAttr', healedClassAttr);
     expect(healedClassAttr).toBe(classAttr);
     await healedTestTagElement.isVisible();
 
@@ -73,7 +70,6 @@ test.describe('General Locator Tests', () => {
     const healedLinkElement = await page.$('a:has-text("Change: LinkText, PartialLinkText")');
     await healedLinkElement.isVisible();
     const healedLinkClassAttr = await healedLinkElement.getAttribute('class');
-    console.log('healed link classAttr', healedLinkClassAttr);
     expect(healedLinkClassAttr).toBe(linkClassAttr);
   });
 

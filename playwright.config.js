@@ -59,18 +59,6 @@ export default defineConfig({
     {
       name: 'chromium',
       timeout: 300000, // 5 minutes for this project including hooks
-      use: {
-        ...devices['Desktop Chrome'],
-        // Override connectOptions for this project
-        connectOptions: {
-          // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
-          wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8080/playwright-proxy',
-          timeout: 600000,            // 60 seconds for WebSocket connection timeout
-        },
-        actionTimeout: 120000,        // 2 minutes for actions
-        navigationTimeout: 120000,    // 2 minutes for navigation
-        testTimeout: 300000,          // 5 minutes for entire test
-      },
     },
   ],
 });
