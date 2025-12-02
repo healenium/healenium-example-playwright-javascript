@@ -28,6 +28,7 @@ test.describe('General Locator Tests', () => {
 
     // Click element by change ID (after selector change - should be healed)
     const healedChangeIdElement = await page.$('#change_id');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedChangeIdElement.press('Enter');
   });
 
@@ -57,17 +58,21 @@ test.describe('General Locator Tests', () => {
     
     // Test elements after selector change (should be healed)
     const healedTestClassElement = await page.$('input.test_class');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedTestClassElement.press('Enter');
 
     const healedTestTagElement = await page.$('test_tag#change_element');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     const healedClassAttr = await healedTestTagElement.getAttribute('class');
     expect(healedClassAttr).toBe(classAttr);
     await healedTestTagElement.isVisible();
 
     const healedChangeNameElement = await page.$('input[name="change_name"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedChangeNameElement.press('Enter');
 
     const healedLinkElement = await page.$('a:has-text("Change: LinkText, PartialLinkText")');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedLinkElement.isVisible();
     const healedLinkClassAttr = await healedLinkElement.getAttribute('class');
     expect(healedLinkClassAttr).toBe(linkClassAttr);
@@ -90,10 +95,13 @@ test.describe('General Locator Tests', () => {
 
     // Find checkboxes after selector change (should be healed)
     const healedCheckbox1 = await page.$('input.input1#form_checked1');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await healedCheckbox1.isVisible()).toBe(true);
     const healedCheckbox2 = await page.$('input.input1#form_checked2');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await healedCheckbox2.isVisible()).toBe(true);
     const healedCheckbox3 = await page.$('input.input1#form_checked3');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await healedCheckbox3.isVisible()).toBe(true);
   });
 
@@ -110,6 +118,7 @@ test.describe('General Locator Tests', () => {
 
     // Find element after selector change (should be healed and now disabled)
     const disabledElement = await page.$('#change_enabled');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await disabledElement.isDisabled()).toBe(true);
   });
 
@@ -126,6 +135,7 @@ test.describe('General Locator Tests', () => {
 
     // Find checkbox after selector change (should be healed and now unchecked)
     const uncheckedElement = await page.$('#change_checked');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await uncheckedElement.isChecked()).toBe(false);
   });
 });

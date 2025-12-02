@@ -21,6 +21,7 @@ test.describe('Parent-Child Locator Tests', () => {
 
     // Find element by CSS first-child pseudo-selector after selector change (should be healed)
     const healedFirstChildElement = await page.$('test_tag:first-child');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await healedFirstChildElement.isVisible()).toBe(true);
   });
 
@@ -37,6 +38,7 @@ test.describe('Parent-Child Locator Tests', () => {
 
     // Find element by CSS last-child pseudo-selector after selector change (should be healed)
     const healedLastChildElement = await page.$('child_tag:last-child');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await healedLastChildElement.isVisible()).toBe(true);
   });
 });

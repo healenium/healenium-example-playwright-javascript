@@ -22,6 +22,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath with special characters after selector change (should be healed)
     const healedSpecialCharElement = await page.$('//*[@id="change:name"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedSpecialCharElement.press('Enter');
   });
 
@@ -39,6 +40,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath following after selector change (should be healed)
     const healedFollowingElement = await page.$('//*[@id="change_className"]/following::test_tag');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedFollowingElement.press('Enter');
   });
 
@@ -56,6 +58,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath contains after selector change (should be healed)
     const healedContainsElement = await page.$('//input[contains(@class, "test")]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedContainsElement.press('Enter');
   });
 
@@ -73,6 +76,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath not contains after selector change (should be healed)
     const healedNotContainsElement = await page.$('//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedNotContainsElement.press('Enter');
   });
 
@@ -90,6 +94,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath following-sibling after selector change (should be healed)
     const healedFollowingSiblingElement = await page.$('//*[starts-with(@class, "test")]/following-sibling::*');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedFollowingSiblingElement.press('Enter');
   });
 
@@ -107,6 +112,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath ancestor after selector change (should be healed)
     const healedAncestorElement = await page.$('(//*[starts-with(@class, "test")]/ancestor::div[@class="healenium-form validate-form"]//input)[1]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedAncestorElement.press('Enter');
   });
 
@@ -124,6 +130,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath OR after selector change (should be healed)
     const healedOrElement = await page.$('//*[@id="change_id" or @id="omg"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedOrElement.press('Enter');
   });
 
@@ -141,6 +148,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath AND after selector change (should be healed)
     const healedAndElement = await page.$('//*[@id="change_id" and @type="text"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedAndElement.press('Enter');
   });
 
@@ -158,6 +166,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath starts-with after selector change (should be healed)
     const healedStartsWithElement = await page.$('//*[starts-with(@class, "test")]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedStartsWithElement.press('Enter');
   });
 
@@ -175,6 +184,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath preceding after selector change (should be healed)
     const healedPrecedingElement = await page.$('//*[@id="change_className"]/preceding::*[@id="change_id"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedPrecedingElement.press('Enter');
   });
 
@@ -192,6 +202,7 @@ test.describe('XPath Locator Tests', () => {
 
     // Find element by XPath descendant after selector change (should be healed)
     const healedDescendantElement = await page.$('//*[@id="descendant_change"]/descendant::input');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedDescendantElement.press('Enter');
   });
 

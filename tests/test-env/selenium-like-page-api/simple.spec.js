@@ -20,6 +20,7 @@ test.describe('Simple Locator Tests', () => {
 
     // Find element by CSS ID after selector change (should be healed)
     const changeIdElement = await page.$('#change_id');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await changeIdElement.isVisible()).toBe(true);
   });
 
@@ -35,6 +36,7 @@ test.describe('Simple Locator Tests', () => {
 
     // Find enabled element by CSS pseudo-selector after selector change (should be healed)
     const changedEnabledElement = await page.$('textarea:enabled');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await changedEnabledElement.isVisible()).toBe(true);
   });
 
@@ -50,6 +52,7 @@ test.describe('Simple Locator Tests', () => {
 
     // Find element by XPath not contains after selector change (should be healed)
     const changedNotContainsElement = await page.$('xpath=//input[not(contains(@class, "input1")) and contains(@class, "test_class")]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     expect(await changedNotContainsElement.isVisible()).toBe(true);
   });
   

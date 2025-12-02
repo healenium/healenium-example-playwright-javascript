@@ -23,8 +23,10 @@ test.describe('Locator API - iframe - Tests', () => {
 
     // Test healing - same action should work after locator change
     const healedIframeElement = await page.$('iframe[title="Iframe Example"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     const healedIframe = await healedIframeElement.contentFrame();
     const healedInputField = await healedIframe.$('#iframe_input');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedInputField.click({ timeout: TIMEOUT });
   });
 
@@ -43,6 +45,7 @@ test.describe('Locator API - iframe - Tests', () => {
 
     // Test healing - same action should work after locator change
     const healedInputField = await iframe.$('#iframe_input');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedInputField.click({ timeout: TIMEOUT });
   });
 
@@ -65,8 +68,10 @@ test.describe('Locator API - iframe - Tests', () => {
 
     // Test healing - same action should work after locator change
     const healedIframeElement = await page.$('iframe[title="Iframe Example"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     const healedIframe = await healedIframeElement.contentFrame();
     const healedInputField = await healedIframe.$('#iframe_input');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedInputField.click({ timeout: TIMEOUT });
   });
 
@@ -87,10 +92,12 @@ test.describe('Locator API - iframe - Tests', () => {
 
     // Test healing nested frame after locator change
     const healedNestedFrameElement = await iframe.$('iframe[title="Iframe Example"]');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     const healedNestedFrame = await healedNestedFrameElement.contentFrame();
 
     // Test healing nested frame element after locator change
     const healedInputField = await healedNestedFrame.$('#iframe_2_input');
+    await page.waitForTimeout(WAIT_TIMEOUT);
     await healedInputField.click({ timeout: TIMEOUT });
   });
   
