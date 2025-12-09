@@ -16,7 +16,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. (undefined)*/
-  workers: process.env.CI ? 1 : 8,
+  workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     // Standard line reporter for test progress
@@ -45,7 +45,7 @@ export default defineConfig({
     /* Connect to Playwright server */
     connectOptions: {
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
-      wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8080/playwright-proxy',
+      wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8095/hlm-playwright-proxy',
       timeout: 60000,            // 60 seconds for WebSocket connection timeout
     },
     // Pass worker information to Healenium
