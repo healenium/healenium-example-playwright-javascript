@@ -18,6 +18,11 @@ connection to healenium proxy:
 npm install
 ```
 
+## run playwright server separetely (optional)
+```
+npx -y playwright run-server --port 5000
+```
+
 ## run playwright proxy with node server
 
 [healinium-playwright-proxy](https://github.com/healenium/healenium-playwright-proxy)
