@@ -19,6 +19,10 @@ npm install
 ```
 
 ## run playwright server separetely (optional)
+
+Check healenium docker-compose. 
+If playwright server is not with playwright-proxy, then run it separately
+
 ```
 npx -y playwright run-server --port 5000
 ```
