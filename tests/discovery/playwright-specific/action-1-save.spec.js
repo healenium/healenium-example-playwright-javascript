@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
@@ -21,13 +22,13 @@ test.describe('Locator API - Action Methods - Tests', () => {
 
   test('double click action', async ({ page }) => {
     test.slow();
-    const inputField = page.locator('input#change_id');
+    const inputField = page.locator('input#newValue');
     await inputField.dblclick();
   });
 
   test('blur action', async ({ page }) => {
     test.slow();
-    const inputField = page.locator('input#change_id');
+    const inputField = page.locator('input#newValue');
     await inputField.blur();
   });
 
@@ -57,14 +58,14 @@ test.describe('Locator API - Action Methods - Tests', () => {
 
   test('press action', async ({ page }) => {
     test.slow();
-    const inputField = page.locator('input#change_id');
+    const inputField = page.locator('input#newValue');
     await inputField.fill('Test text');
     await inputField.press('Enter');
   });
 
   test('hover action', async ({ page }) => {
     test.slow();
-    const inputField = page.locator('input#change_id');
+    const inputField = page.locator('input#newValue');
     // here might be Visual changes: 
     // If there are hover styles, they'll be visible (e.g., border color change, background color)
     await inputField.hover();
