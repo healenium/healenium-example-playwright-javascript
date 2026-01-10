@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
@@ -17,7 +18,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
   test('describe action for form elements', async ({ page }) => {
     test.slow();
   // describe affects only selector's value
-  const changeIdInput = page.locator('input#change_id')
+  const changeIdInput = page.locator('input#newValue')
       .describe('Primary input field that changes ID and TagName');
 
     const changeClassInput = page.locator('.test_class')
@@ -42,7 +43,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
   test('ariaSnapshot action', async ({ page }) => {
     test.slow();
     // Get ARIA snapshot of individual input
-    const changeIdInput = page.locator('input#change_id');
+    const changeIdInput = page.locator('input#newValue');
     const inputAriaSnapshot = await changeIdInput.ariaSnapshot({ timeout: TIMEOUT });
     const stringifiedInputAriaSnapshot = JSON.stringify(inputAriaSnapshot, null, 2);
     console.log('Input ARIA Snapshot:', stringifiedInputAriaSnapshot);
