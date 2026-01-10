@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
@@ -10,7 +11,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
   test('describe action', async ({ page }) => {
     test.slow();
     // describe affects only selector's value
-    const changeIdInput = page.locator('input#change_id')
+    const changeIdInput = page.locator('input#newValue')
       .describe('Primary input field that changes ID and TagName');
 
     const changeClassInput = page.locator('.test_class')
@@ -28,7 +29,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     await submitBtn.click();
 
     // Test healing - same actions should work after locator change
-    const healedChangeIdInput = page.locator('input#change_id')
+    const healedChangeIdInput = page.locator('input#newValue')
       .describe('Primary input field that changes ID and TagName');
 
     const healedChangeClassInput = page.locator('.test_class')
@@ -45,7 +46,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
   test('ariaSnapshot action', async ({ page }) => {
     test.slow();
     // Get ARIA snapshot of individual input
-    const changeIdInput = page.locator('input#change_id');
+    const changeIdInput = page.locator('input#newValue');
     const inputAriaSnapshot = await changeIdInput.ariaSnapshot({ timeout: TIMEOUT });
     const stringifiedInputAriaSnapshot = JSON.stringify(inputAriaSnapshot, null, 2);
 
@@ -58,7 +59,7 @@ test.describe('Locator API - Utility Methods - Tests', () => {
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
-    const healedChangeIdInput = page.locator('input#change_id');
+    const healedChangeIdInput = page.locator('input#newValue');
     const healedInputAriaSnapshot = await healedChangeIdInput.ariaSnapshot({ timeout: TIMEOUT });
     const healedStringifiedInputAriaSnapshot = JSON.stringify(healedInputAriaSnapshot, null, 2);
 
