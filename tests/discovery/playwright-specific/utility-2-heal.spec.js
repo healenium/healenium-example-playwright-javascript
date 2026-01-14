@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
@@ -20,7 +21,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
   const changeIdInput = page.locator('input#change_id')
       .describe('Primary input field that changes ID and TagName');
 
-    const changeClassInput = page.locator('.test_class')
+    const changeClassInput = page.locator('input#change_className')
       .describe('Input field that changes ClassName');
 
     // Use the described locators
@@ -33,7 +34,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
 
   test('highlight element', async ({ page }) => {
     // Highlight won't be healed
-    const testClassInput = page.locator('.test_class');
+    const testClassInput = page.locator('input#change_className');
     await testClassInput.highlight({ timeout: TIMEOUT });
     await page.waitForTimeout(500);
     await page.screenshot({ path: 'screenshots/highlight-2-heal.png', fullPage: true });
@@ -54,7 +55,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
 
   test('dispatch event action', async ({ page }) => {
     test.slow();
-    const inputField = page.locator('.test_class');
+    const inputField = page.locator('input#change_className');
     const childTag = page.locator('child_tag#change_element_last_child');
     const testTag = page.locator('test_tag#change_element');
     const changeNameInput = page.locator('input[name="change_name"]');
@@ -67,7 +68,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
 
   test('waitFor action', async ({ page }) => {
     test.slow();
-    const testClassInput = page.locator('.test_class');
+    const testClassInput = page.locator('input#change_className');
 
     await testClassInput.waitFor({ state: 'visible', timeout: TIMEOUT });
 
@@ -80,7 +81,7 @@ test.describe('Locator API - Utility Methods - HEAL Tests', () => {
 
   test('waitFor with strict mode and custom timeout', async ({ page }) => {
     test.slow();
-    const testClassInput = page.locator('.test_class');
+    const testClassInput = page.locator('input#change_className');
 
     // Wait with strict mode (will fail if multiple elements match)
     await testClassInput.waitFor({
