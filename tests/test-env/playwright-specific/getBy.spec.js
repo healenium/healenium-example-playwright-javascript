@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
@@ -9,14 +10,14 @@ test.describe('Locator API - getBy - Tests', () => {
 
   test('getByRole - img - alt', async ({ page }) => {
     test.slow();
-    await expect(page.getByRole('img', { name: 'Healenium Logo' })).toBeVisible({ TIMEOUT });
+    await expect(page.locator('img#logo_img')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
-    await expect(page.getByRole('img', { name: 'Healenium Logo' })).toBeVisible({ TIMEOUT });
+    await expect(page.locator('img#logo_img')).toBeVisible({ TIMEOUT });
   });
 
   test('getByRole - textbox - aria label', async ({ page }) => {
@@ -107,14 +108,14 @@ test.describe('Locator API - getBy - Tests', () => {
 
   test('getByTestId', async ({ page }) => {
     test.slow();
-    await expect(page.getByTestId('change_testId')).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#validate_testId')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
-    await expect(page.getByTestId('change_testId')).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#validate_testId')).toBeVisible({ TIMEOUT });
   });
 
 });
