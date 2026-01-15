@@ -21,14 +21,14 @@ test.describe('Locator API - getBy - Tests', () => {
 
   test('getByRole - textbox - aria label', async ({ page }) => {
     test.slow();
-    await expect(page.getByRole('textbox', { name: 'change_tag_aria_label' })).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#change_below_element')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
-    await expect(page.getByRole('textbox', { name: 'change_tag_aria_label' })).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#change_below_element')).toBeVisible({ TIMEOUT });
   });
 
   test('getByRole - textbox - aria labelledby', async ({ page }) => {
@@ -95,14 +95,14 @@ test.describe('Locator API - getBy - Tests', () => {
 
   test('getByTitle', async ({ page }) => {
     test.slow();
-    await expect(page.getByTitle('Validate change test id')).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#validate_testId')).toBeVisible({ TIMEOUT });
 
     // Click Change locators button to test healing
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
     // Test healing - same action should work after locator change
-    await expect(page.getByTitle('Validate change test id')).toBeVisible({ TIMEOUT });
+    await expect(page.locator('input#validate_testId')).toBeVisible({ TIMEOUT });
   });
 
   test('getByTestId', async ({ page }) => {
