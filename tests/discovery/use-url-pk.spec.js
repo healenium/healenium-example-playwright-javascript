@@ -2,7 +2,12 @@ import { test } from '@playwright/test';
 
 const TIMEOUT = 5000;
 const WAIT_TIMEOUT = 350;
-
+/*
+  when KEY_SELECTOR_URL = false
+  it's expected that 2 exact cases fail when healing disabled for some selector
+  when KEY_SELECTOR_URL = true
+  it's expected that 1 exact case  fail when healing disabled for some selector
+*/
 test.describe('Use URL in PK tests', () => {
   test.beforeEach(async ({ page }) => {
     // 'https://elenastepuro.github.io/test_env/index.html'
@@ -53,7 +58,7 @@ test.describe('Use URL in PK tests', () => {
     const submitBtn = await page.$('#Submit');
     await submitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
-    
+
     // Test elements after selector change (should be healed)
     const healedTestClassElement = await page.$('input.test_class');
     await page.waitForTimeout(WAIT_TIMEOUT);
@@ -90,7 +95,7 @@ test.describe('Use URL in PK tests', () => {
     // Test healing - same action should work after locator change
     const healedInputField = page.locator('input#change_id');
     await healedInputField.dblclick({ timeout: TIMEOUT });
-  });  
+  });
 
   test('elenastepuro.github.io - press Enter', async ({ page }) => {
     test.slow();
@@ -104,10 +109,10 @@ test.describe('Use URL in PK tests', () => {
     const submitBtn = await page.$('#Submit');
     await submitBtn.click({ timeout: TIMEOUT });
     await page.waitForTimeout(WAIT_TIMEOUT);
-    
+
     // Test elements after selector change (should be healed)
     const healedTestClassElement = await page.$('input.test_class');
     await page.waitForTimeout(WAIT_TIMEOUT);
     await healedTestClassElement.press('Enter');
-  });  
+  });
 });
