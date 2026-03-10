@@ -7,7 +7,7 @@ in the playwright.config.js
 connection to healenium proxy:
 ```
         connectOptions: {
-          // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
+          // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5050',
           wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8080/playwright-proxy',
           timeout: 600000,            // 60 seconds for WebSocket connection timeout
         },
@@ -24,7 +24,7 @@ Check healenium docker-compose.
 If playwright server is not with playwright-proxy, then run it separately
 
 ```
-npx -y playwright run-server --port 5000
+npx -y playwright run-server --port 5050
 ```
 
 ## run playwright proxy with node server
