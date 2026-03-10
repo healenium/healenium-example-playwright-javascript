@@ -44,8 +44,11 @@ export default defineConfig({
 
     /* Connect to Playwright server */
     connectOptions: {
-      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5000',
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:5050',
       wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8095/hlm-playwright-proxy',
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/hlm-playwright-proxy', 
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/playwright-server',  // (port 80)
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://public-ip/playwright-server', // (port 443)
       timeout: 60000,            // 60 seconds for WebSocket connection timeout
     },
     // Pass worker information to Healenium
