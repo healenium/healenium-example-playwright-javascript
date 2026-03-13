@@ -127,4 +127,28 @@ test.describe('Locator API - Chained Locators (healing) - Tests', () => {
     await expect(healedInput).toHaveValue('or title testid', { timeout: TIMEOUT });
   });
 
+  test('chain with first - child_tag then first', async ({ page }) => {
+    test.slow();
+    const element = page.locator('test_tag').first();
+    await expect(element).toBeVisible();
+
+    const submitBtn = page.locator('#Submit');
+    await submitBtn.click();
+
+    const healedElement = page.locator('test_tag').first();
+    await expect(healedElement).toBeVisible();
+  });
+
+  test('chain with last - child_tag then last', async ({ page }) => {
+    test.slow();
+    const element = page.locator('child_tag').last();
+    await expect(element).toBeVisible();
+
+    const submitBtn = page.locator('#Submit');
+    await submitBtn.click();
+
+    const healedElement = page.locator('child_tag').last();
+    await expect(healedElement).toBeVisible();
+  });
+  
 });
