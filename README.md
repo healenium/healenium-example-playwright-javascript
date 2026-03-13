@@ -2,7 +2,7 @@
 
 ## prerequisites
 
-in the playwright.config.js
+in the `playwright.config.js`
 
 connection to healenium proxy:
 ```
@@ -18,7 +18,7 @@ connection to healenium proxy:
 npm install
 ```
 
-## run playwright server separetely (optional)
+## run playwright server separately (optional)
 
 Check healenium docker-compose. 
 If playwright server is not with playwright-proxy, then run it separately
@@ -29,14 +29,14 @@ npx -y playwright run-server --port 5050
 
 ## run playwright proxy with node server
 
-[healinium-playwright-proxy](https://github.com/healenium/healenium-playwright-proxy)
+[healenium-playwright-proxy](https://github.com/healenium/healenium-playwright-proxy)
 
-connection to the proxy is configured in the 'playwright.config.js'
+connection to the proxy is configured in the `playwright.config.js`
 
 ## run test 
 
 ```
-npx playwright test tests/test-env/page-api/css.spec.js
+npx playwright test tests/test-env/selenium-like-page-api/css-1.spec.js
 ```
 
 ## docs
