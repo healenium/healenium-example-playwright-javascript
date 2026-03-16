@@ -1,3 +1,4 @@
+
 import { test, expect } from '@playwright/test';
 
 const TIMEOUT = 5000;
@@ -15,7 +16,7 @@ test.describe('Locator API - iframe - Tests', () => {
   test('iframe - change frame title - input field expect', async ({ page }) => {
     test.slow();
 
-    const iframe = page.frameLocator('iframe[title="Iframe Example"]');
+    const iframe = page.frameLocator('iframe#iframe_id');
 
     // Test input field in iframe before selector change
     const inputField = iframe.locator('#iframe_input');
@@ -34,7 +35,7 @@ test.describe('Locator API - iframe - Tests', () => {
     test.slow();
 
     // Get the iframe element
-    const iframe = page.frameLocator('iframe[title="Iframe Example"]');
+    const iframe = page.frameLocator('iframe#iframe_id');
 
     // Test select element in iframe before selector change
     const selectElement = iframe.locator('#iframe_select_item');
@@ -54,18 +55,18 @@ test.describe('Locator API - iframe - Tests', () => {
   test('iframe - change all nested path', async ({ page }) => {
     test.slow();
 
-    const inputField = page.frameLocator('iframe[title="Iframe Example"]').frameLocator('iframe[title="Nested iframe Example"]').locator('#iframe_2_input');
+    const inputField = page.frameLocator('iframe#iframe_id').frameLocator('iframe#iframe_2_id').locator('input#newId_iframe2');
     await expect(inputField).toBeVisible();
 
     // Click iframe Change locators button 
-    const iframeSubmitBtn = page.frameLocator('iframe[title="Iframe Example"]').locator('#iframe_Submit');
+    const iframeSubmitBtn = page.frameLocator('iframe#iframe_id').locator('#iframe_Submit');
     await iframeSubmitBtn.click({ timeout: TIMEOUT });
     // Click Change locators button
     const submitBtn = page.locator('#Submit');
     await submitBtn.click({ timeout: TIMEOUT });
 
     // Test healing - same action should work after locator change
-    const healedInputField = page.frameLocator('iframe[title="Iframe Example"]').frameLocator('iframe[title="Nested iframe Example"]').locator('#iframe_2_input');
+    const healedInputField = page.frameLocator('iframe#iframe_id').frameLocator('iframe#iframe_2_id').locator('input#newId_iframe2');
     await expect(healedInputField).toBeVisible();
 
   });
