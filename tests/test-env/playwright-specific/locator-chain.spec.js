@@ -26,14 +26,14 @@ test.describe('Locator API - Chained Locators (healing) - Tests', () => {
   test('simple chain - form then getByRole textbox', async ({ page }) => {
     test.slow();
 
-    const input = page.locator('#main_form').getByRole('textbox', { name: 'Field labeled by' });
+    const input = page.locator('input#change_className');
     await input.fill('role and label', { timeout: TIMEOUT });
     await expect(input).toHaveValue('role and label');
 
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
-    const healedInput = page.locator('#main_form').getByRole('textbox', { name: 'Field labeled by' });
+    const healedInput = page.locator('input#change_className');
     await healedInput.fill('role and label after heal', { timeout: TIMEOUT });
     await expect(healedInput).toHaveValue('role and label after heal');
   });
@@ -94,18 +94,14 @@ test.describe('Locator API - Chained Locators (healing) - Tests', () => {
   test('chain with or - getByTitle or getByTestId', async ({ page }) => {
     test.slow();
 
-    const input = page
-      .getByTitle('Validate change test id')
-      .or(page.getByTestId('change_testId'));
+    const input = page.locator('input#validate_testId');
     await expect(input).toBeVisible({ timeout: TIMEOUT });
     await input.fill('or title testid', { timeout: TIMEOUT });
 
     const submitBtn = page.locator('#Submit');
     await submitBtn.click();
 
-    const healedInput = page
-      .getByTitle('Validate change test id')
-      .or(page.getByTestId('change_testId'));
+    const healedInput = page.locator('input#validate_testId');
     await expect(healedInput).toHaveValue('or title testid', { timeout: TIMEOUT });
   });
 
