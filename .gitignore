@@ -13,3 +13,6 @@
 /screenshots/
 /test-results/
 /performance-reports/
+
+# Local secrets
+.env

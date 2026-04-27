@@ -4,6 +4,12 @@
 
 in the `playwright.config.js`
 
+create `.env` in the project root:
+```
+MOBITRU_USER=HEALENIUM
+MOBITRU_API_KEY=your_mobitru_api_key
+```
+
 connection to healenium proxy:
 ```
         connectOptions: {

@@ -1,5 +1,18 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import 'dotenv/config';
+
+/**
+ * Mobitru Basic auth for the upstream WebSocket (same as wss://user:apiKey@host/...).
+ * @returns {Record<string, string>}
+ */
+function mobitruConnectAuthHeaders() {
+  const user = process.env.MOBITRU_USER || 'HEALENIUM';
+  const apiKey = process.env.MOBITRU_API_KEY;
+  if (!apiKey) return {};
+  const token = Buffer.from(`${user}:${apiKey}`, 'utf8').toString('base64');
+  return { 'Authorization': `Basic ${token}` };
+}
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -16,7 +29,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. (undefined)*/
-  workers: process.env.CI ? 1 : 4,
+  workers: process.env.CI ? 1 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     // Standard line reporter for test progress
@@ -48,12 +61,19 @@ export default defineConfig({
       wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8095/hlm-playwright-proxy',
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/hlm-playwright-proxy', 
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/playwright-server',  // (port 80)
-      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://public-ip/playwright-server', // (port 443)
-      timeout: 60000,            // 60 seconds for WebSocket connection timeout
+    
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://pw.demo.healenium.infinityfree.me/hlm-playwright-proxy', // (port 443)
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://HEALENIUM:${MOBITRU_API_KEY}@browserhub-us.mobitru.com/playwright/chrome/playwright-1.55.0',
+      timeout: 60000, // 60 seconds for WebSocket connection timeout
+      headers: {
+        ...mobitruConnectAuthHeaders(),
+        'x-api-key': 'key-for-runner-2', // ALB / WAF — Mobitru: MOBITRU_* env on test runner + X-Upstream-Authorization above
+      },
     },
     // Pass worker information to Healenium
     extraHTTPHeaders: {
-      'X-Worker-ID': process.env.TEST_WORKER_INDEX || '0'
+      'X-Worker-ID': process.env.TEST_WORKER_INDEX || '0',
+      'x-api-key': 'key-for-runner-2' // needs for healenium internal process
     }
   },
 
