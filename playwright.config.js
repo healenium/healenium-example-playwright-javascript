@@ -29,7 +29,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. (undefined)*/
-  workers: process.env.CI ? 1 : 2,
+  workers: process.env.CI ? 1 : 8,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     // Standard line reporter for test progress
@@ -61,7 +61,8 @@ export default defineConfig({
       wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8095/hlm-playwright-proxy',
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/hlm-playwright-proxy', 
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/playwright-server',  // (port 80)
-    
+
+      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://demo.healenium.lab.epam.com/hlm-playwright-proxy', // (port 443)
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://pw.demo.healenium.infinityfree.me/hlm-playwright-proxy', // (port 443)
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://HEALENIUM:${MOBITRU_API_KEY}@browserhub-us.mobitru.com/playwright/chrome/playwright-1.55.0',
       timeout: 60000, // 60 seconds for WebSocket connection timeout
@@ -70,7 +71,7 @@ export default defineConfig({
         'x-api-key': 'key-for-runner-2', // ALB / WAF — Mobitru: MOBITRU_* env on test runner + X-Upstream-Authorization above
       },
     },
-    // Pass worker information to Healenium
+    // Pass worker information to Browser
     extraHTTPHeaders: {
       'X-Worker-ID': process.env.TEST_WORKER_INDEX || '0',
       'x-api-key': 'key-for-runner-2' // needs for healenium internal process

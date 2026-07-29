@@ -55,7 +55,7 @@ test.describe('Locator API - iframe - Tests', () => {
     test.slow();
 
     const inputField = page.frameLocator('iframe[title="Iframe Example"]').frameLocator('iframe[title="Nested iframe Example"]').locator('#iframe_2_input');
-    await expect(inputField).toBeVisible();
+    await inputField.click({ timeout: TIMEOUT });
 
     // Click iframe Change locators button 
     const iframeSubmitBtn = page.frameLocator('iframe[title="Iframe Example"]').locator('#iframe_Submit');
@@ -66,7 +66,7 @@ test.describe('Locator API - iframe - Tests', () => {
 
     // Test healing - same action should work after locator change
     const healedInputField = page.frameLocator('iframe[title="Iframe Example"]').frameLocator('iframe[title="Nested iframe Example"]').locator('#iframe_2_input');
-    await expect(healedInputField).toBeVisible();
+    await healedInputField.click({ timeout: TIMEOUT });
 
   });
 });
