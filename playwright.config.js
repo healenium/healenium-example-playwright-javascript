@@ -67,7 +67,7 @@ export default defineConfig({
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://HEALENIUM:${MOBITRU_API_KEY}@browserhub-us.mobitru.com/playwright/chrome/playwright-1.55.0',
       timeout: 60000, // 60 seconds for WebSocket connection timeout
       headers: {
-        ...mobitruConnectAuthHeaders(),
+        // ...mobitruConnectAuthHeaders(),
         'x-api-key': 'key-for-runner-2', // ALB / WAF — Mobitru: MOBITRU_* env on test runner + X-Upstream-Authorization above
       },
     },

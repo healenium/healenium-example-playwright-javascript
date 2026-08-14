@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { gotoTestEnv, TEST_ENV_URL } from '../../helpers/goto';
 
 const TIMEOUT = 5000;
 
@@ -9,7 +10,7 @@ const TIMEOUT = 5000;
 
 test.describe('Locator API - iframe - Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://healenium.github.io/healenium-test-env/index.html', { waitUntil: 'load' });
+    await gotoTestEnv(page, TEST_ENV_URL);
   });
 
   test('iframe - change frame title - input field expect', async ({ page }) => {
