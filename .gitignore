@@ -13,3 +13,5 @@
 /screenshots/
 /test-results/
 /performance-reports/
+
+.env
