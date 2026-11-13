@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import 'dotenv/config';
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -48,16 +49,6 @@ export default defineConfig({
       wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://localhost:8095/hlm-playwright-proxy',
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/hlm-playwright-proxy', 
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://public-ip/playwright-server',  // (port 80)
-<<<<<<< Updated upstream
-      // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://public-ip/playwright-server', // (port 443)
-      timeout: 60000,            // 60 seconds for WebSocket connection timeout
-    },
-    // Pass worker information to Healenium
-    extraHTTPHeaders: {
-      'X-Worker-ID': process.env.TEST_WORKER_INDEX || '0'
-    }
-=======
-
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://demo.healenium.lab.epam.com/hlm-playwright-proxy', // (port 443)
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'ws://hlm-pw-saas-test.healenium.org/hlm-playwright-proxy', 
       // wsEndpoint: process.env.PLAYWRIGHT_SERVER_URL || 'wss://HEALENIUM:${MOBITRU_API_KEY}@browserhub-us.mobitru.com/playwright/chrome/playwright-1.60.0',
@@ -73,7 +64,6 @@ export default defineConfig({
     // extraHTTPHeaders: {
     //   'X-Worker-ID': process.env.TEST_WORKER_INDEX || '0'
     // }
->>>>>>> Stashed changes
   },
 
   /* Configure projects for major browsers */
